@@ -1,0 +1,408 @@
+﻿
+10-20 13:20:46.430  1560  1577 I ActivityManager: Start proc 7489:br.com.frotabank.app/u0a79 for activity 
+br.com.frotabank.app/com.banking.SplashActivity
+10-20 13:20:46.439  7489  7489 I chatty  : uid=0(root) br.com.frotabank.app expire 2 lines
+10-20 13:20:46.442  7489  7489 I chatty  : uid=10079(br.com.frotabank.app) expire 180 lines
+10-20 13:20:46.512  1560  3530 W SchedPolicy: add_tid_to_cgroup failed to write '7489' (No space left on device); fd=27
+10-20 13:20:46.634  1337  1337 E SELinux : avc:  denied  { find } for service=tab pid=7489 uid=10079 
+scontext=u:r:untrusted_app:s0:c79,c256,c512,c768 tcontext=u:object_r:default_android_service:s0 tclass=service_manager 
+permissive=1
+10-20 13:20:46.775  7489  7518 I chatty  : uid=10079(br.com.frotabank.app) expire 1 line
+10-20 13:20:46.850  7489  7520 I chatty  : uid=10079(br.com.frotabank.app) expire 14 lines
+10-20 13:20:46.916  7489  7523 I chatty  : uid=10079(br.com.frotabank.app) Crashlytics Exc expire 3 lines
+10-20 13:20:47.007  7489  7533 I chatty  : uid=10079(br.com.frotabank.app) Firebase Backgr expire 1 line
+10-20 13:20:47.113  7489  7529 I chatty  : uid=10079(br.com.frotabank.app) expire 2 lines
+10-20 13:20:47.204  7489  7543 I chatty  : uid=10079(br.com.frotabank.app) expire 4 lines
+10-20 13:20:47.575  7489  7561 I chatty  : uid=10079(br.com.frotabank.app) expire 10 lines
+10-20 13:20:47.665  7489  7567 I chatty  : uid=10079(br.com.frotabank.app) expire 7 lines
+10-20 13:20:47.696  1560  1614 W InputMethodManagerService: Ignoring startInput with null EditorInfo. uid=10079 
+pid=7489
+10-20 13:20:47.803  7489  7550 I chatty  : uid=10079(br.com.frotabank.app) ProcessStablePh expire 1 line
+10-20 13:20:47.855  7489  7560 I chatty  : uid=10079(br.com.frotabank.app) RenderThread expire 21 lines
+10-20 13:20:47.953  7489  7502 I chatty  : uid=10079(br.com.frotabank.app) HeapTaskDaemon expire 1 line
+10-20 13:20:48.105  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4589, eventTime=2550907, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:48.105  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4590, eventTime=2550958, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:48.111  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4591, eventTime=2551211, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:48.179  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4592, eventTime=2551262, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:48.193  7489  7568 I chatty  : uid=10079(br.com.frotabank.app) mqt_js expire 18 lines
+10-20 13:20:48.243  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4593, eventTime=2551314, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:48.277  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4594, eventTime=2551365, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:48.335  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4595, eventTime=2551415, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:48.358  7489  7489 I chatty  : uid=10079(br.com.frotabank.app) expire 190 lines
+10-20 13:20:48.373  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4596, eventTime=2551465, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:48.410  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4597, eventTime=2551516, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:48.461  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4598, eventTime=2551567, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:48.511  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4599, eventTime=2551617, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:48.562  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4600, eventTime=2551668, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:48.613  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4601, eventTime=2551718, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:48.662  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4602, eventTime=2551769, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:48.713  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4603, eventTime=2551819, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:48.764  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4604, eventTime=2551870, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:48.815  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4605, eventTime=2551921, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:48.865  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4606, eventTime=2551972, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:48.917  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4607, eventTime=2552023, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:48.968  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4608, eventTime=2552074, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:49.018  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4609, eventTime=2552124, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:49.069  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4610, eventTime=2552175, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:49.120  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4611, eventTime=2552226, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:49.170  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4612, eventTime=2552276, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:49.220  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4613, eventTime=2552326, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:49.271  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4614, eventTime=2552377, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:49.322  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4615, eventTime=2552428, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:49.372  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4616, eventTime=2552478, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:49.423  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4617, eventTime=2552529, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:49.473  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4618, eventTime=2552579, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:49.524  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4619, eventTime=2552630, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:49.576  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4620, eventTime=2552682, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:49.627  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4621, eventTime=2552733, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:49.677  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4622, eventTime=2552784, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:49.728  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4623, eventTime=2552834, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:49.778  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4624, eventTime=2552884, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:49.829  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4625, eventTime=2552935, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:49.879  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4626, eventTime=2552985, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:49.930  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4627, eventTime=2553036, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:49.981  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4628, eventTime=2553087, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:50.032  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4629, eventTime=2553138, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:50.082  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4630, eventTime=2553188, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:50.133  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4631, eventTime=2553239, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:50.183  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4632, eventTime=2553289, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:50.234  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4633, eventTime=2553340, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:50.284  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4634, eventTime=2553391, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:50.335  7489  7489 W ViewRootImpl[MainActivity]: Dropping event due to no window focus: KeyEvent { 
+action=ACTION_DOWN, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x8, 
+repeatCount=4635, eventTime=2553441, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:50.389  7489  7489 W ViewRootImpl[MainActivity]: Cancelling event due to no window focus: KeyEvent { 
+action=ACTION_UP, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x28, 
+repeatCount=0, eventTime=2553493, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:50.389  7489  7489 I chatty  : uid=10079(br.com.frotabank.app) identical 7 lines
+10-20 13:20:50.389  7489  7489 W ViewRootImpl[MainActivity]: Cancelling event due to no window focus: KeyEvent { 
+action=ACTION_UP, keyCode=KEYCODE_ALT_LEFT, scanCode=56, metaState=META_ALT_ON|META_ALT_LEFT_ON, flags=0x28, 
+repeatCount=0, eventTime=2553493, downTime=2305083, deviceId=3, source=0x101 }
+10-20 13:20:50.857  7489  7569 I chatty  : uid=10079(br.com.frotabank.app) mqt_native_modu expire 12 lines
+10-20 13:20:51.013  7489  7611 I chatty  : uid=10079(br.com.frotabank.app) WM.task-2 expire 1 line
+10-20 13:20:51.152  7489  7626 I chatty  : uid=10079(br.com.frotabank.app) expire 1 line
+10-20 13:20:51.817  7489  7636 I chatty  : uid=10079(br.com.frotabank.app) FrescoIoBoundEx expire 3 lines
+10-20 13:20:51.877  7489  7628 I chatty  : uid=10079(br.com.frotabank.app) Firebase-Messag expire 1 line
+10-20 13:20:51.929  7489  7641 I chatty  : uid=10079(br.com.frotabank.app) expire 181 lines
+10-20 13:20:52.111  7489  7648 I chatty  : uid=10079(br.com.frotabank.app) expire 2 lines
+10-20 13:20:52.158  7489  7642 I chatty  : uid=10079(br.com.frotabank.app) expire 2 lines
+10-20 13:20:53.727  7489  7500 I chatty  : uid=10079(br.com.frotabank.app) FinalizerDaemon expire 1 line
+10-20 13:20:58.853  7489  7489 I m.frotabank.ap:   at void kotlinx.coroutines.DispatchedTask.run() 
+(DispatchedTask.kt:108)
+10-20 13:20:58.853  7489  7489 I m.frotabank.ap:   at void android.os.Handler.handleCallback(android.os.Message) 
+(Handler.java:873)
+10-20 13:20:58.853  7489  7489 I m.frotabank.ap:   at void android.os.Handler.dispatchMessage(android.os.Message) 
+(Handler.java:99)
+10-20 13:20:58.853  7489  7489 I m.frotabank.ap:   at void android.os.Looper.loop() (Looper.java:193)
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap:   at void android.app.ActivityThread.main(java.lang.String[]) 
+(ActivityThread.java:6838)
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap:   at java.lang.Object 
+java.lang.reflect.Method.invoke(java.lang.Object, java.lang.Object[]) (Method.java:-2)
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap:   at void 
+com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run() (RuntimeInit.java:493)
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap:   at void com.android.internal.os.ZygoteInit.main(java.lang.String[]) 
+(ZygoteInit.java:860)
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap: Caused by: java.lang.ClassNotFoundException: Didn't find class 
+"androidx.window.extensions.core.util.function.Consumer" on path: DexPathList[[zip file 
+"/system/app/Chrome/Chrome.apk"],nativeLibraryDirectories=[/system/app/Chrome/lib/x86, 
+/system/app/Chrome/Chrome.apk!/lib/x86, /system/lib, /system/vendor/lib, /system/lib, /system/vendor/lib]]
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap:   at java.lang.Class 
+dalvik.system.BaseDexClassLoader.findClass(java.lang.String) (BaseDexClassLoader.java:134)
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap:   at java.lang.Class 
+java.lang.ClassLoader.loadClass(java.lang.String, boolean) (ClassLoader.java:379)
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap:   at java.lang.Class 
+java.lang.ClassLoader.loadClass(java.lang.String) (ClassLoader.java:312)
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap:   at java.lang.Object J.N.MAqmDh4t(long, java.lang.Object, 
+java.lang.String, int, int, java.lang.String, int, int, java.lang.String, java.lang.Object, java.lang.String, 
+java.lang.String, java.lang.String, boolean, boolean, boolean, java.lang.Object, boolean, boolean, java.lang.Object, 
+long, long, boolean) (chromium-Monochrome.aab-stable-636708227:-2)
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap:   at org.chromium.content_public.browser.NavigationHandle 
+org.chromium.content.browser.framehost.NavigationControllerImpl.g(org.chromium.content_public.browser.LoadUrlParams) 
+(chromium-Monochrome.aab-stable-636708227:176)
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap:   at void 
+org.chromium.android_webview.AwContents.w(org.chromium.content_public.browser.LoadUrlParams) 
+(chromium-Monochrome.aab-stable-636708227:310)
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap:   at void org.chromium.android_webview.AwContents.t(java.lang.String, 
+java.lang.String, java.lang.String) (chromium-Monochrome.aab-stable-636708227:105)
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap:   at void 
+com.android.webview.chromium.WebViewChromium.loadData(java.lang.String, java.lang.String, java.lang.String) 
+(chromium-Monochrome.aab-stable-636708227:40)
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap:   at void android.webkit.WebView.loadData(java.lang.String, 
+java.lang.String, java.lang.String) (WebView.java:812)
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap:   at java.lang.Object 
+com.onesignal.inAppMessages.internal.display.impl.WebViewManager.setupWebView(android.app.Activity, java.lang.String, 
+boolean, kotlin.coroutines.Continuation) (WebViewManager.kt:329)
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap:   at java.lang.Object 
+com.onesignal.inAppMessages.internal.display.impl.WebViewManager$setupWebView$1.invokeSuspend(java.lang.Object) 
+(WebViewManager.kt:-1)
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap:   at void 
+kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(java.lang.Object) (ContinuationImpl.kt:33)
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap:   at void kotlinx.coroutines.DispatchedTask.run() 
+(DispatchedTask.kt:108)
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap:   at void android.os.Handler.handleCallback(android.os.Message) 
+(Handler.java:873)
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap:   at void android.os.Handler.dispatchMessage(android.os.Message) 
+(Handler.java:99)
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap:   at void android.os.Looper.loop() (Looper.java:193)
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap:   at void android.app.ActivityThread.main(java.lang.String[]) 
+(ActivityThread.java:6838)
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap:   at java.lang.Object 
+java.lang.reflect.Method.invoke(java.lang.Object, java.lang.Object[]) (Method.java:-2)
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap:   at void 
+com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run() (RuntimeInit.java:493)
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap:   at void com.android.internal.os.ZygoteInit.main(java.lang.String[]) 
+(ZygoteInit.java:860)
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap: 
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap: Rejecting re-init on previously-failed class java.lang.Class<Q15>: 
+java.lang.NoClassDefFoundError: Failed resolution of: Landroidx/window/extensions/core/util/function/Consumer;
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap:   at java.lang.Object J.N.MAqmDh4t(long, java.lang.Object, 
+java.lang.String, int, int, java.lang.String, int, int, java.lang.String, java.lang.Object, java.lang.String, 
+java.lang.String, java.lang.String, boolean, boolean, boolean, java.lang.Object, boolean, boolean, java.lang.Object, 
+long, long, boolean) (chromium-Monochrome.aab-stable-636708227:-2)
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap:   at org.chromium.content_public.browser.NavigationHandle 
+org.chromium.content.browser.framehost.NavigationControllerImpl.g(org.chromium.content_public.browser.LoadUrlParams) 
+(chromium-Monochrome.aab-stable-636708227:176)
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap:   at void 
+org.chromium.android_webview.AwContents.w(org.chromium.content_public.browser.LoadUrlParams) 
+(chromium-Monochrome.aab-stable-636708227:310)
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap:   at void org.chromium.android_webview.AwContents.t(java.lang.String, 
+java.lang.String, java.lang.String) (chromium-Monochrome.aab-stable-636708227:105)
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap:   at void 
+com.android.webview.chromium.WebViewChromium.loadData(java.lang.String, java.lang.String, java.lang.String) 
+(chromium-Monochrome.aab-stable-636708227:40)
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap:   at void android.webkit.WebView.loadData(java.lang.String, 
+java.lang.String, java.lang.String) (WebView.java:812)
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap:   at java.lang.Object 
+com.onesignal.inAppMessages.internal.display.impl.WebViewManager.setupWebView(android.app.Activity, java.lang.String, 
+boolean, kotlin.coroutines.Continuation) (WebViewManager.kt:329)
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap:   at java.lang.Object 
+com.onesignal.inAppMessages.internal.display.impl.WebViewManager$setupWebView$1.invokeSuspend(java.lang.Object) 
+(WebViewManager.kt:-1)
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap:   at void 
+kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(java.lang.Object) (ContinuationImpl.kt:33)
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap:   at void kotlinx.coroutines.DispatchedTask.run() 
+(DispatchedTask.kt:108)
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap:   at void android.os.Handler.handleCallback(android.os.Message) 
+(Handler.java:873)
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap:   at void android.os.Handler.dispatchMessage(android.os.Message) 
+(Handler.java:99)
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap:   at void android.os.Looper.loop() (Looper.java:193)
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap:   at void android.app.ActivityThread.main(java.lang.String[]) 
+(ActivityThread.java:6838)
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap:   at java.lang.Object 
+java.lang.reflect.Method.invoke(java.lang.Object, java.lang.Object[]) (Method.java:-2)
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap:   at void 
+com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run() (RuntimeInit.java:493)
+10-20 13:20:58.854  7489  7489 I m.frotabank.ap:   at void com.android.internal.os.ZygoteInit.main(java.lang.String[]) 
+(ZygoteInit.java:860)
+10-20 13:20:58.855  7489  7489 I m.frotabank.ap: Caused by: java.lang.ClassNotFoundException: Didn't find class 
+"androidx.window.extensions.core.util.function.Consumer" on path: DexPathList[[zip file 
+"/system/app/Chrome/Chrome.apk"],nativeLibraryDirectories=[/system/app/Chrome/lib/x86, 
+/system/app/Chrome/Chrome.apk!/lib/x86, /system/lib, /system/vendor/lib, /system/lib, /system/vendor/lib]]
+10-20 13:20:58.855  7489  7489 I m.frotabank.ap:   at java.lang.Class 
+dalvik.system.BaseDexClassLoader.findClass(java.lang.String) (BaseDexClassLoader.java:134)
+10-20 13:20:58.855  7489  7489 I m.frotabank.ap:   at java.lang.Class 
+java.lang.ClassLoader.loadClass(java.lang.String, boolean) (ClassLoader.java:379)
+10-20 13:20:58.855  7489  7489 I m.frotabank.ap:   at java.lang.Class 
+java.lang.ClassLoader.loadClass(java.lang.String) (ClassLoader.java:312)
+10-20 13:20:58.855  7489  7489 I m.frotabank.ap:   at java.lang.Object J.N.MAqmDh4t(long, java.lang.Object, 
+java.lang.String, int, int, java.lang.String, int, int, java.lang.String, java.lang.Object, java.lang.String, 
+java.lang.String, java.lang.String, boolean, boolean, boolean, java.lang.Object, boolean, boolean, java.lang.Object, 
+long, long, boolean) (chromium-Monochrome.aab-stable-636708227:-2)
+10-20 13:20:58.855  7489  7489 I m.frotabank.ap:   at org.chromium.content_public.browser.NavigationHandle 
+org.chromium.content.browser.framehost.NavigationControllerImpl.g(org.chromium.content_public.browser.LoadUrlParams) 
+(chromium-Monochrome.aab-stable-636708227:176)
+10-20 13:20:58.855  7489  7489 I m.frotabank.ap:   at void 
+org.chromium.android_webview.AwContents.w(org.chromium.content_public.browser.LoadUrlParams) 
+(chromium-Monochrome.aab-stable-636708227:310)
+10-20 13:20:58.855  7489  7489 I m.frotabank.ap:   at void org.chromium.android_webview.AwContents.t(java.lang.String, 
+java.lang.String, java.lang.String) (chromium-Monochrome.aab-stable-636708227:105)
+10-20 13:20:58.855  7489  7489 I m.frotabank.ap:   at void 
+com.android.webview.chromium.WebViewChromium.loadData(java.lang.String, java.lang.String, java.lang.String) 
+(chromium-Monochrome.aab-stable-636708227:40)
+10-20 13:20:58.855  7489  7489 I m.frotabank.ap:   at void android.webkit.WebView.loadData(java.lang.String, 
+java.lang.String, java.lang.String) (WebView.java:812)
+10-20 13:20:58.855  7489  7489 I m.frotabank.ap:   at java.lang.Object 
+com.onesignal.inAppMessages.internal.display.impl.WebViewManager.setupWebView(android.app.Activity, java.lang.String, 
+boolean, kotlin.coroutines.Continuation) (WebViewManager.kt:329)
+10-20 13:20:58.855  7489  7489 I m.frotabank.ap:   at java.lang.Object 
+com.onesignal.inAppMessages.internal.display.impl.WebViewManager$setupWebView$1.invokeSuspend(java.lang.Object) 
+(WebViewManager.kt:-1)
+10-20 13:20:58.855  7489  7489 I m.frotabank.ap:   at void 
+kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(java.lang.Object) (ContinuationImpl.kt:33)
+10-20 13:20:58.855  7489  7489 I m.frotabank.ap:   at void kotlinx.coroutines.DispatchedTask.run() 
+(DispatchedTask.kt:108)
+10-20 13:20:58.855  7489  7489 I m.frotabank.ap:   at void android.os.Handler.handleCallback(android.os.Message) 
+(Handler.java:873)
+10-20 13:20:58.855  7489  7489 I m.frotabank.ap:   at void android.os.Handler.dispatchMessage(android.os.Message) 
+(Handler.java:99)
+10-20 13:20:58.855  7489  7489 I m.frotabank.ap:   at void android.os.Looper.loop() (Looper.java:193)
+10-20 13:20:58.855  7489  7489 I m.frotabank.ap:   at void android.app.ActivityThread.main(java.lang.String[]) 
+(ActivityThread.java:6838)
+10-20 13:20:58.855  7489  7489 I m.frotabank.ap:   at java.lang.Object 
+java.lang.reflect.Method.invoke(java.lang.Object, java.lang.Object[]) (Method.java:-2)
+10-20 13:20:58.855  7489  7489 I m.frotabank.ap:   at void 
+com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run() (RuntimeInit.java:493)
+10-20 13:20:58.855  7489  7489 I m.frotabank.ap:   at void com.android.internal.os.ZygoteInit.main(java.lang.String[]) 
+(ZygoteInit.java:860)
+10-20 13:20:58.855  7489  7489 I m.frotabank.ap: 
+10-20 13:20:58.855  7489  7489 I m.frotabank.ap: Rejecting re-init on previously-failed class java.lang.Class<Q15>: 
+java.lang.NoClassDefFoundError: Failed resolution of: Landroidx/window/extensions/core/util/function/Consumer;
+10-20 13:20:58.855  7489  7489 I m.frotabank.ap:   at java.lang.Object J.N.MAqmDh4t(long, java.lang.Object, 
+java.lang.String, int, int, java.lang.String, int, int, java.lang.String, java.lang.Object, java.lang.String, 
+java.lang.String, java.lang.String, boolean, boolean, boolean, java.lang.Object, boolean, boolean, java.lang.Object, 
+long, long, boolean) (chromium-Monochrome.aab-stable-636708227:-2)
+10-20 13:20:58.855  7489  7489 I m.frotabank.ap:   at org.chromium.content_public.browser.NavigationHandle 
+org.chromium.content.browser.framehost.NavigationControllerImpl.g(org.chromium.content_public.browser.LoadUrlParams) 
+(chromium-Monochrome.aab-stable-636708227:176)
+10-20 13:20:58.855  7489  7489 I m.frotabank.ap:   at void 
+org.chromium.android_webview.AwContents.w(org.chromium.content_public.browser.LoadUrlParams) 
+(chromium-Monochrome.aab-stable-636708227:310)
+10-20 13:20:58.859  7489  7712 I         : fastpipe: Connect success
+10-20 13:20:58.862  7489  7712 D HostConnection: HostRPC::connect sucess: app=br.com.frotabank.app, pid=7489, 
+tid=7712, this=0xbafb10c0
+10-20 13:20:58.866  7489  7712 D HostConnection: queryAndSetGLESMaxVersion select gles-version: 3.1 hostGLVersion:46 
+process:br.com.frotabank.app
+10-20 13:20:58.926  7489  7698 W cr_media: registerBluetoothIntentsIfNeeded: Requires BLUETOOTH permission
+10-20 13:20:58.932  7489  7712 D EGL_emulation: eglCreateContext: 0xec1abf70: maj 3 min 1 rcv 4
+10-20 13:20:58.941  7489  7712 D HostConnection: ExtendedRCEncoderContext GL_VERSION return OpenGL ES 3.1 v1
+10-20 13:20:58.988  7489  7712 D EGL_emulation: eglCreateContext: 0xec1abf70: maj 3 min 0 rcv 3
+10-20 13:20:58.995  7489  7712 D HostConnection: ExtendedRCEncoderContext GL_VERSION return OpenGL ES 3.1 v1
+10-20 13:20:59.002  7489  7712 E eglCodecCommon: glUtilsParamSize: unknow param 0x000088ef
+10-20 13:20:59.011  7489  7712 E eglCodecCommon: glUtilsParamSize: unknow param 0x000084ff
+10-20 13:20:59.012  7489  7712 E eglCodecCommon: glUtilsParamSize: unknow param 0x000087fe
+10-20 13:20:59.086  7489  7703 W VideoCapabilities: Unrecognized profile 4 for video/hevc
+10-20 13:20:59.087  7489  7703 W VideoCapabilities: Unrecognized profile 4 for video/hevc
+10-20 13:20:59.094  7489  7703 I VideoCapabilities: Unsupported profile 4 for video/mp4v-es
+10-20 13:21:00.160  7489  7489 I JavaBridge: type=1400 audit(0.0:3066): avc: denied { open } for 
+path="/data/local/cfg-ineyg/android7" dev="sdb2" ino=393584 scontext=u:r:untrusted_app:s0:c79,c256,c512,c768 
+tcontext=u:object_r:system_data_file:s0 tclass=file permissive=1
+10-20 13:21:00.285  7489  7560 E EGL_emulation: tid 7560: eglSurfaceAttrib(1504): error 0x3009 (EGL_BAD_MATCH)
+10-20 13:21:00.285  7489  7560 W OpenGLRenderer: Failed to set EGL_SWAP_BEHAVIOR on surface 0xca3e4ac0, 
+error=EGL_BAD_MATCH
+10-20 13:21:00.327  7489  7560 E eglCodecCommon: glUtilsParamSize: unknow param 0x000088ef
+10-20 13:21:00.328  7489  7560 E eglCodecCommon: glUtilsParamSize: unknow param 0x000084ff
+10-20 13:21:00.328  7489  7560 E eglCodecCommon: glUtilsParamSize: unknow param 0x000087fe
+10-20 13:21:01.682  7489  7560 D HostConnection: glGetError exceeded.
+10-20 13:21:12.602  7489  7560 I chatty  : uid=10079(br.com.frotabank.app) RenderThread identical 39 lines
+10-20 13:21:25.956  7489  7560 I chatty  : uid=10079(br.com.frotabank.app) RenderThread expire 33 lines
+10-20 13:21:39.460  7489  7560 I chatty  : uid=10079(br.com.frotabank.app) RenderThread expire 5 lines
+10-20 13:21:49.611  7489  7568 I chatty  : uid=10079(br.com.frotabank.app) mqt_js expire 16 lines
+10-20 13:21:49.638  7489  7569 I chatty  : uid=10079(br.com.frotabank.app) mqt_native_modu expire 17 lines
+10-20 13:21:49.670  7489  7489 I chatty  : uid=10079(br.com.frotabank.app) expire 13 lines
+10-20 13:23:29.439  7489  7502 I chatty  : uid=10079(br.com.frotabank.app) HeapTaskDaemon expire 10 lines
+10-20 13:23:29.956  7489  7569 I chatty  : uid=10079(br.com.frotabank.app) mqt_native_modu expire 10 lines
+10-20 13:23:53.189  7489  7569 I chatty  : uid=10079(br.com.frotabank.app) mqt_native_modu expire 10 lines
+10-20 13:25:06.007  7489  7569 I chatty  : uid=10079(br.com.frotabank.app) mqt_native_modu expire 14 lines
+10-20 13:25:55.695  7489  7568 I chatty  : uid=10079(br.com.frotabank.app) mqt_js expire 10 lines
+10-20 13:26:13.701  7489  7560 I chatty  : uid=10079(br.com.frotabank.app) RenderThread expire 20 lines
+10-20 13:26:13.791  7489  7489 D TextClassifierService: No configured system TextClassifierService
+10-20 13:26:13.799  7489  7489 D TextClassifierService: No configured system TextClassifierService
+10-20 13:26:13.802  7489  7965 D TextClassifierService: No configured system TextClassifierService
+10-20 13:26:13.945  7489  7965 D androidtc: Loading ModelFile { 
+path=/etc/textclassifier/textclassifier.universal.model name=textclassifier.universal.model version=6 locales=und }
+10-20 13:26:14.048  7489  7965 D TextClassifierService: No configured system TextClassifierService
+10-20 13:26:14.351  7489  7489 D TextClassifierService: No configured system TextClassifierService
+10-20 13:26:14.352  7489  7970 D TextClassifierService: No configured system TextClassifierService
+10-20 13:26:14.537  7489  7489 D TextClassifierService: No configured system TextClassifierService
+10-20 13:26:14.538  7489  7489 D TextClassifierService: No configured system TextClassifierService
+10-20 13:26:14.554  7489  7851 D TextClassifierService: No configured system TextClassifierService
+10-20 13:26:14.586  7489  7851 D TextClassifierService: No configured system TextClassifierService
+10-20 13:26:16.076  7489  7489 D TextClassifierService: No configured system TextClassifierService
+10-20 13:26:16.078  7489  7965 D TextClassifierService: No configured system TextClassifierService
+10-20 13:26:16.906  7489  7489 D TextClassifierService: No configured system TextClassifierService
+10-20 13:26:16.907  7489  7970 D TextClassifierService: No configured system TextClassifierService
+
+

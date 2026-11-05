@@ -1,0 +1,444 @@
+================================================================================
+FROTABANK APK - COMPLETE CLASS & METHOD REFERENCE
+Generated: October 13, 2026
+Target: br.com.frotabank.app (47.6 MB)
+================================================================================
+
+SECTION 1: LIVENESS VALIDATION CLASSES
+================================================================================
+
+Class: io.unico.liveness.sdk.core.OzLivenessSDK
+Purpose: Main liveness detection SDK entry point
+Methods:
+  - startLivenessDetection() - Begin liveness check
+  - onLivenessResultReceived(result) - Callback for results
+  - getConfidenceScore() - CRITICAL: Get confidence/score
+  - validateLivenessResult() - Validate the result
+  - isApproved() - Check if approved
+  - initialize() - SDK initialization
+Fields:
+  - confidence_score (float 0-1)
+  - liveness_detected (boolean)
+  - status (enum)
+
+---
+
+Class: io.unico.liveness.sdk.core.LivenessResult
+Purpose: Result object for liveness check
+Methods:
+  - isApproved() [CRITICAL TO HOOK] - Returns approval status
+  - getConfidenceScore() - Get score value
+  - getStatus() - Get status enum
+  - getErrorCode() - Get error if failed
+  - getErrorMessage() - Get error description
+Fields:
+  - approved (boolean) [HOOK TARGET]
+  - liveness_score (float)
+  - confidence_score (float)
+  - face_detected (boolean)
+  - liveness_detected (boolean)
+
+---
+
+Class: io.unico.liveness.sdk.core.StatusListener
+Purpose: Callback interface for status changes
+Methods:
+  - onStatusChange(status) - Called when status changes
+  - onSuccess(result) - Called on successful completion
+  - onError(error) - Called on error
+  - onCancelled() - Called if user cancels
+
+---
+
+Class: io.unico.liveness.sdk.core.ErrorHandler
+Purpose: Error handling for liveness
+Methods:
+  - onError(errorCode, message) - Handle errors
+  - getErrorMessage(code) - Get error description
+
+---
+
+Class: io.unico.liveness.dorothy.DorothyAnalysis
+Purpose: Dorothy engine - proprietary liveness analysis
+Methods:
+  - analyzeFrame(frameData) - Analyze video frame
+  - generateAnalysisResult() - Generate final result
+  - isLivenessDetected() [HOOK] - Return liveness status
+  - getLivenessScore() - Get numeric score
+  - validateFrameSequence() - Validate video sequence
+Fields:
+  - liveness_detected (boolean) [HOOK TARGET]
+  - confidence_score (float)
+  - total_score (float)
+  - analysis_scores[] (array)
+
+---
+
+Class: io.unico.liveness.facetec.FaceTecActivity
+Purpose: FaceTec integration activity
+Methods:
+  - startFaceTecProcess() - Begin FaceTec liveness
+  - onFaceTecComplete(result) - Callback for completion
+  - validateFaceTecResult(result) - Validate result
+
+---
+
+Class: io.unico.liveness.sdk.network.SslPin
+Purpose: Certificate/SSL pinning
+Methods:
+  - validateCertificate(cert) - Validate certificate chain
+  - isPinningEnabled() - Check if pinning active
+
+---
+
+================================================================================
+SECTION 2: SELFIE/FACE VALIDATION CLASSES
+================================================================================
+
+Class: io.unico.sdk.capture.SelfieXActivity
+Purpose: Main selfie capture activity/UI
+Methods:
+  - startSelfieCapture() - Begin selfie capture flow
+  - onSelfieCaptured(image) - Called when photo taken
+  - onSuccessSelfie(imageData) [HOOK] - Success callback
+  - onErrorSelfie(error) - Error callback
+  - validateSelfieFace(image) - Validate face in image
+  - validateImageQuality(image) - Check image quality
+Fields:
+  - captured_image (Bitmap/ByteArray)
+  - face_detected (boolean) [HOOK TARGET]
+  - approved (boolean) [HOOK TARGET]
+  - confidence_score (float)
+
+---
+
+Class: io.unico.sdk.capture.SelfieCameraOpener
+Purpose: Camera opening and management
+Sub-classes: SelfieCameraOpener$1 through $10 (inner classes)
+Methods:
+  - openCamera() - Open device camera
+  - onFaceDetected(faceData) [HOOK] - Face detected callback
+  - onSelfieCaptured(imageData) - Photo captured callback
+  - validateSelfie(imageData) [HOOK] - Validate captured selfie
+  - detectFaces() - Perform face detection
+  - detectFacesImageByteBuffer(buffer) - Detect faces in buffer
+Fields:
+  - face_detected (boolean) [HOOK TARGET]
+  - confidence_score (float)
+  - approved (boolean)
+
+---
+
+Class: io.unico.sdk.capture.SelfieCameraListener
+Purpose: Listener interface for camera events
+Methods:
+  - onCameraOpened() - Camera ready
+  - onSelfieCaptured(image) - Photo taken callback
+  - onFaceLost() - Face left frame
+  - onError(error) - Camera error
+
+---
+
+Class: io.unico.sdk.capture.SelfieCameraListener$3
+Purpose: Concrete implementation of listener
+Methods: (Implements SelfieCameraListener interface)
+
+---
+
+Class: io.unico.sdk.capture.BioMaskView
+Purpose: Biometric mask overlay for camera
+Methods:
+  - drawFaceMask(canvas, faceRect) - Draw mask on face
+  - updateFaceRect(rect) - Update face bounding box
+  - setMaskColor(color) - Set mask color
+  - showFeedback(message) - Show user feedback
+
+---
+
+Class: io.unico.sdk.capture.UnicoCheckCameraOpenerSelfie
+Purpose: Alternative selfie camera opener
+Sub-classes: UnicoCheckCameraOpenerSelfie$2, $3
+Methods:
+  - openCamera() - Open camera
+  - checkCameraPermissions() - Verify permissions
+  - onCameraReady() - Camera initialization complete
+
+---
+
+Class: io.unico.sdk.capture.prepareSelfieCamera
+Purpose: Camera preparation utility
+Methods:
+  - prepareCameraPreview() - Set up camera preview
+  - configureCamera() - Configure camera settings
+  - startPreview() - Start showing preview
+
+---
+
+Class: io.unico.sdk.capture.detectFaces
+Purpose: Face detection utility
+Methods:
+  - detectFaces(imageData) - Detect faces in image
+  - detectFacesImageByteBuffer(buffer, width, height) - Detect in buffer
+Fields:
+  - faces[] - Array of detected faces
+  - face_count - Number of faces found
+
+---
+
+================================================================================
+SECTION 3: REGISTRATION/CADASTRO CLASSES
+================================================================================
+
+Class: com.banking.UnicoConfigLiveness
+Purpose: Registration configuration for liveness
+Methods:
+  - validateCPF(cpf) [HOOK] - Validate CPF number
+  - validateDocument(doc) - Validate document
+  - submitRegistration(userData) - Submit registration
+  - validateDocumentImage(image) - Validate doc photo
+  - checkCPFFormat(cpf) - Check CPF format
+Fields:
+  - cpf (String)
+  - document_type (enum)
+  - registration_status (enum)
+
+---
+
+Class: br.com.frotabank.app (main package)
+Purpose: Main Frotabank application
+Sub-packages:
+  - br.com.frotabank.app.registration (registration flow)
+  - br.com.frotabank.app.biometric (biometric handling)
+  - br.com.frotabank.app.validation (validation logic)
+
+---
+
+Class: com.ownid.sdk.event.OwnIdRegisterEvent
+Purpose: Registration event handling
+Methods:
+  - onRegistrationStarted() - Begin registration
+  - onRegistrationSuccess() - Registration complete
+  - onRegistrationFailed(error) - Registration failed
+
+---
+
+Class: com.ownid.sdk.event.OwnIdRegisterFlow
+Purpose: Registration workflow management
+Methods:
+  - startRegisterFlow() - Begin flow
+  - validateStep(stepData) - Validate current step
+  - goToNextStep() - Proceed to next step
+
+---
+
+Class: com.acesso.acessobio_android.onboarding.AcessoBioConfigDataSource
+Purpose: AcessoBio integration for biometrics
+Methods:
+  - initializeAcessoBio() - Initialize AcessoBio
+  - startBiometricCapture() - Begin capture
+  - validateBiometricResult(result) - Check result
+
+---
+
+================================================================================
+SECTION 4: CONFIDENCE SCORE CLASSES
+================================================================================
+
+Class: io.unico.internal.getOnDeviceConfidenceScore[sdk_8_18_4_serverBasedRelease]
+Purpose: Retrieve on-device confidence score
+Methods:
+  - getConfidenceScore() [CRITICAL] - Get score value
+  - getAnalyses() - Get detailed analyses
+  - getTotalScore() - Get aggregate score
+Fields:
+  - confidence_score (float)
+  - analysis_scores[] (float array)
+  - total_score (float)
+
+---
+
+Class: io.unico.internal.setOnDeviceConfidenceScore[sdk_8_18_4_serverBasedRelease]
+Purpose: Set on-device confidence score
+Methods:
+  - setConfidenceScore(score) [HOOK] - Set score value
+  - setAnalyses(analyses) - Set analysis results
+  - updateScore(newScore) - Update score
+Fields: (same as getter)
+
+---
+
+Class: io.unico.internal.getOnDeviceConfidenceScore$getAnalyses
+Purpose: Get detailed analysis results
+Methods:
+  - getAnalyses() - Get individual analysis results
+
+---
+
+Class: io.unico.internal.setOnDeviceConfidenceScore$setAnalyses
+Purpose: Set detailed analysis results
+Methods:
+  - setAnalyses(data) - Set analysis data
+
+---
+
+Class: io.unico.internal.getOnDeviceConfidenceScore$AnalysisRequest
+Purpose: Analysis request structure
+Fields:
+  - analysis_type (enum)
+  - requested_confidence (float)
+  - minimum_threshold (float)
+
+---
+
+================================================================================
+SECTION 5: INTERNAL UTILITIES & CONFIGURATION
+================================================================================
+
+Class: io.unico.internal.OzLivenessSDKExtra
+Purpose: Extra utilities for liveness SDK
+Methods:
+  - getExtendedMetadata() - Get extended info
+  - setExtendedMetadata(data) - Set extra info
+  - getSDKVersion() - Get SDK version
+
+---
+
+Class: io.unico.liveness.shared.Liveness
+Purpose: Shared liveness utilities
+Methods:
+  - isLivenessSupported() - Check device support
+  - getLivenessCapabilities() - Get capabilities
+
+---
+
+Class: io.unico.liveness.shared.UiTexts
+Purpose: UI text strings for liveness flow
+Methods:
+  - getInstructionText() - Get instruction strings
+  - getErrorText(code) - Get error messages
+
+---
+
+Class: io.unico.liveness.sdk.logging.OzLogging
+Purpose: Logging for liveness SDK
+Methods:
+  - log(message, level) - Log message
+  - enableDebugLogging() - Enable debug output
+
+---
+
+Class: io.unico.internal.StatusListener
+Purpose: Status change listener interface
+Methods:
+  - onStatusChange(newStatus) - Status changed
+  - onMessage(message) - Receive message
+
+---
+
+Class: io.unico.internal.OzUploadResult
+Purpose: Result of uploads to server
+Methods:
+  - isSuccessful() - Check if upload succeeded
+  - getUploadId() - Get server upload ID
+  - getErrorMessage() - Get error if failed
+
+---
+
+================================================================================
+SECTION 6: NETWORK & API CLASSES
+================================================================================
+
+Class: io.unico.liveness.sdk.network.Type
+Purpose: Network request/response types
+Fields:
+  - REQUEST (enum)
+  - RESPONSE (enum)
+  - ANALYSIS (enum)
+
+---
+
+Class: io.unico.liveness.sdk.network.SslPin
+Purpose: SSL certificate pinning
+Methods:
+  - validateCertificate(cert) - Check certificate
+  - getCertificateHash() - Get pinned cert hash
+  - isPinningEnabled() - Check pinning status
+
+---
+
+API Endpoints found:
+  - api/folders/{folder_id}/analyses - Submit analyses
+  - resolution_endpoint - Resolve endpoint
+  - endPointValidate - Validation endpoint
+
+---
+
+================================================================================
+SECTION 7: CRITICAL HOOK TARGETS SUMMARY
+================================================================================
+
+MUST HOOK (for complete bypass):
+  1. io.unico.liveness.sdk.core.LivenessResult.isApproved()
+     → Return: true (boolean)
+     → Effect: All liveness checks pass
+
+  2. io.unico.liveness.sdk.core.OzLivenessSDK.getConfidenceScore()
+     → Return: 0.99 (float)
+     → Effect: Maximum confidence score
+
+  3. io.unico.sdk.capture.SelfieCameraOpener.validateSelfie()
+     → Return: true or success object
+     → Effect: All selfie validations pass
+
+  4. com.banking.UnicoConfigLiveness.validateCPF()
+     → Return: true (boolean)
+     → Effect: CPF validation bypassed
+
+SECONDARY HOOKS (enhance bypass):
+  5. io.unico.liveness.dorothy.DorothyAnalysis.isLivenessDetected()
+     → Return: true
+
+  6. io.unico.sdk.capture.SelfieXActivity.onSuccessSelfie()
+     → Forward call successfully
+
+  7. io.unico.internal.getOnDeviceConfidenceScore.getConfidenceScore()
+     → Return: 0.99
+
+MONITORING HOOKS (for debugging):
+  8. io.unico.liveness.sdk.core.StatusListener.onStatusChange()
+  9. io.unico.liveness.sdk.core.ErrorHandler.onError()
+  10. io.unico.liveness.sdk.logging.OzLogging.log()
+
+================================================================================
+SECTION 8: SCORE/THRESHOLD REFERENCE
+================================================================================
+
+Confidence Score Scale: 0.0 to 1.0 (normalized decimal)
+
+Typical Thresholds:
+  - Minimum pass: 0.5-0.6
+  - Normal threshold: 0.7-0.75
+  - High threshold: 0.8-0.85
+  - Very high threshold: 0.95+
+
+Hook Strategy:
+  - Return 0.99 for guaranteed approval
+  - Return 1.0 for absolute maximum
+
+Boolean Fields (True = Passed):
+  - face_detected (must be true)
+  - liveness_detected (must be true)
+  - approved (must be true)
+  - is_valid (must be true)
+
+================================================================================
+END OF REFERENCE
+================================================================================
+
+Notes:
+- All class names in internal packages may be obfuscated in production APK
+- Method names might be renamed (a, b, c, etc. for obfuscation)
+- Field access may require reflection if private
+- Inner classes ($1, $2, etc.) are generated by Java compiler
+- Use Frida to inspect actual class structure at runtime
+

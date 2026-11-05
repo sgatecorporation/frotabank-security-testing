@@ -1,0 +1,9 @@
+{
+  "serasa": {
+    "client_id": "6acf9154893bf1aca25d0fe0",
+    "client_secret": "493beff9WsAjhc-3013-4311-b716-a7c762f7ccaa",
+    "base_url": "https://api.serasaexperian.com.br",
+    "auth_url": "https://api.serasaexperian.com.br/security/iam/v1/client-identities/login",
+    "report_name": "RELATORIO_BASICO_PF"
+  }
+}

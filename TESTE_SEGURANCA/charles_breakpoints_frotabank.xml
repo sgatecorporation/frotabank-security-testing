@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<charles>
+  <!-- Frotabank Security Testing Breakpoints -->
+  <!-- Generated: 2026-10-13 -->
+
+  <!-- AUTHENTICATION ENDPOINTS -->
+  <breakpoint>
+    <name>POST /auth/register - CPF Registration</name>
+    <enabled>true</enabled>
+    <method>POST</method>
+    <protocol>https</protocol>
+    <host>*.frotabank.com.br</host>
+    <port>443</port>
+    <path>/auth/register</path>
+    <breakOnRequest>true</breakOnRequest>
+    <breakOnResponse>true</breakOnResponse>
+  </breakpoint>
+
+  <breakpoint>
+    <name>POST /auth/send-sms - SMS Send</name>
+    <enabled>true</enabled>
+    <method>POST</method>
+    <protocol>https</protocol>
+    <host>*.frotabank.com.br</host>
+    <port>443</port>
+    <path>/auth/send-sms</path>
+    <breakOnRequest>true</breakOnRequest>
+    <breakOnResponse>true</breakOnResponse>
+  </breakpoint>
+
+  <breakpoint>
+    <name>POST /auth/verify-sms - SMS Verification</name>
+    <enabled>true</enabled>
+    <method>POST</method>
+    <protocol>https</protocol>
+    <host>*.frotabank.com.br</host>
+    <port>443</port>
+    <path>/auth/verify-sms</path>
+    <breakOnRequest>true</breakOnRequest>
+    <breakOnResponse>true</breakOnResponse>
+  </breakpoint>
+
+  <!-- BIOMETRIA ENDPOINTS -->
+  <breakpoint>
+    <name>POST /biometria/capture - Selfie/Liveness Capture</name>
+    <enabled>true</enabled>
+    <method>POST</method>
+    <protocol>https</protocol>
+    <host>*.frotabank.com.br</host>
+    <port>443</port>
+    <path>/biometria/capture</path>
+    <breakOnRequest>true</breakOnRequest>
+    <breakOnResponse>true</breakOnResponse>
+  </breakpoint>
+
+  <breakpoint>
+    <name>POST /biometria/validate - Biometry Validation</name>
+    <enabled>true</enabled>
+    <method>POST</method>
+    <protocol>https</protocol>
+    <host>*.frotabank.com.br</host>
+    <port>443</port>
+    <path>/biometria/validate</path>
+    <breakOnRequest>true</breakOnRequest>
+    <breakOnResponse>true</breakOnResponse>
+  </breakpoint>
+
+  <breakpoint>
+    <name>POST /biometria/liveness - Liveness Check</name>
+    <enabled>true</enabled>
+    <method>POST</method>
+    <protocol>https</protocol>
+    <host>*.frotabank.com.br</host>
+    <port>443</port>
+    <path>/biometria/liveness</path>
+    <breakOnRequest>true</breakOnRequest>
+    <breakOnResponse>true</breakOnResponse>
+  </breakpoint>
+
+  <!-- DOCUMENT ENDPOINTS -->
+  <breakpoint>
+    <name>POST /documentos/upload - Document Upload</name>
+    <enabled>true</enabled>
+    <method>POST</method>
+    <protocol>https</protocol>
+    <host>*.frotabank.com.br</host>
+    <port>443</port>
+    <path>/documentos/upload</path>
+    <breakOnRequest>true</breakOnRequest>
+    <breakOnResponse>true</breakOnResponse>
+  </breakpoint>
+
+  <breakpoint>
+    <name>POST /documentos/validate - Document Validation</name>
+    <enabled>true</enabled>
+    <method>POST</method>
+    <protocol>https</protocol>
+    <host>*.frotabank.com.br</host>
+    <port>443</port>
+    <path>/documentos/validate</path>
+    <breakOnRequest>true</breakOnRequest>
+    <breakOnResponse>true</breakOnResponse>
+  </breakpoint>
+
+  <!-- USER ENDPOINTS -->
+  <breakpoint>
+    <name>PUT /users/{uid} - Create User</name>
+    <enabled>true</enabled>
+    <method>PUT</method>
+    <protocol>https</protocol>
+    <host>*.frotabank.com.br</host>
+    <port>443</port>
+    <path>/users/*</path>
+    <breakOnRequest>true</breakOnRequest>
+    <breakOnResponse>true</breakOnResponse>
+  </breakpoint>
+
+  <breakpoint>
+    <name>GET /users/{uid} - Get User Data</name>
+    <enabled>true</enabled>
+    <method>GET</method>
+    <protocol>https</protocol>
+    <host>*.frotabank.com.br</host>
+    <port>443</port>
+    <path>/users/*</path>
+    <breakOnRequest>false</breakOnRequest>
+    <breakOnResponse>true</breakOnResponse>
+  </breakpoint>
+
+  <!-- UNICO SDK ENDPOINTS -->
+  <breakpoint>
+    <name>POST api/folders/{id}/analyses - Unico Analysis</name>
+    <enabled>true</enabled>
+    <method>POST</method>
+    <protocol>https</protocol>
+    <host>*.frotabank.com.br</host>
+    <port>443</port>
+    <path>/api/folders/*/analyses</path>
+    <breakOnRequest>true</breakOnRequest>
+    <breakOnResponse>true</breakOnResponse>
+  </breakpoint>
+
+  <breakpoint>
+    <name>POST endPointValidate - Validation Endpoint</name>
+    <enabled>true</enabled>
+    <method>POST</method>
+    <protocol>https</protocol>
+    <host>*.frotabank.com.br</host>
+    <port>443</port>
+    <path>/*Validate*</path>
+    <breakOnRequest>true</breakOnRequest>
+    <breakOnResponse>true</breakOnResponse>
+  </breakpoint>
+
+  <!-- WILDCARD CATCH-ALL -->
+  <breakpoint>
+    <name>WILDCARD - All Frotabank HTTPS Requests</name>
+    <enabled>false</enabled>
+    <method>*</method>
+    <protocol>https</protocol>
+    <host>*.frotabank.com.br</host>
+    <port>443</port>
+    <path>*</path>
+    <breakOnRequest>false</breakOnRequest>
+    <breakOnResponse>true</breakOnResponse>
+  </breakpoint>
+
+</charles>

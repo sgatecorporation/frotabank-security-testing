@@ -1,0 +1,17 @@
+﻿
+10-20 13:27:57.790  1560  3536 I ActivityManager: START u0 
+{cmp=br.com.frotabank.app/io.unico.liveness.dorothy.presentation.DorothyActivity} from uid 10079
+10-20 13:27:58.189  1560  2250 I ActivityManager: START u0 {cmp=br.com.frotabank.app/io.unico.internal.component16 
+(has extras)} from uid 10079
+10-20 13:28:14.958  1560  1572 W ActivityManager: Duplicate finish request for ActivityRecord{51f99a0 u0 
+br.com.frotabank.app/io.unico.liveness.dorothy.presentation.DorothyActivity t13 f}
+10-20 13:28:21.199  1560  2309 I ActivityManager: START u0 
+{cmp=br.com.frotabank.app/io.unico.liveness.dorothy.presentation.DorothyActivity} from uid 10079
+10-20 13:28:21.474  1560  2341 I ActivityManager: START u0 {cmp=br.com.frotabank.app/io.unico.internal.component16 
+(has extras)} from uid 10079
+10-20 13:29:02.822  7489  8444 D UNICO_SIGNING_KEY: 7bbc34af2d387f668bc324a9d002c34776f6dd8ec3c4cdcacd0eb7ca8b5a1ed0
+10-20 13:30:17.633  1560  2309 I ActivityManager: START u0 {cmp=br.com.frotabank.app/io.unico.internal.component16 
+(has extras)} from uid 10079
+10-20 13:30:24.644  7489  8450 D UNICO_SIGNING_KEY: 7bbc34af2d387f668bc324a9d002c34776f6dd8ec3c4cdcacd0eb7ca8b5a1ed0
+
+

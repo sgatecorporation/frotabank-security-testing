@@ -1,0 +1,100 @@
+# Large decompiled files
+decompiled.js
+*.large
+
+# APK extracts and binaries
+apk_extracted/
+apk_original/
+apk_patched/
+frotabank_*/
+frotabank.apks
+frotabank-patched.*
+frotabank_dashboard.html
+*.apk
+*.apks
+*.idsig
+*.keystore
+*.rar
+*.zip
+*.bin
+*.so
+*.so.xz
+*.xz
+jadx/
+jadx.zip
+jadx_output/
+split_*/
+temp_*/
+temp.apk
+meta_*/
+BURLA_*/
+
+# Frida binaries
+frida-server*
+frida-gadget*
+
+# Screenshots
+*.png
+
+# Captures
+*.flow
+*.flows
+
+# Heap dumps
+heap_*.txt
+
+# Misc root scripts
+inject_*.py
+fix_*.py
+replace_*.py
+setup_and_inject.py
+find_process.py
+list_*.py
+monitor_*.py
+remove_sig.py
+frotabank_bypass.py
+frida_*.py
+frida_*.js
+apktool.jar
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.env
+.env.local
+
+# Dashboard
+TESTE_SEGURANCA/dashboard/venv/
+TESTE_SEGURANCA/dashboard/.env
+TESTE_SEGURANCA/dashboard/instance/
+
+# Node modules
+node_modules/
+package-lock.json
+yarn.lock
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Temp files
+*.tmp
+.tmp/
+
+# Credentials
+*credentials*
+*secret*
+*.key
